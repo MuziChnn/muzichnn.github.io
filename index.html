@@ -1,12 +1,964 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Muzi Chen · Academic Elegance</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+import React, { useMemo, useState, useEffect } from "react";
+
+// =========================
+// Academic Elegance – EN/DE one‑page site
+// Tech: React + TailwindCSS (auto-available in Canvas), no deps
+// Instructions:
+// 1) Replace /assets/profile.jpg with your photo.
+// 2) Put your CVs at /assets/CV_MuziChen_EN.pdf and /assets/CV_MuziChen_DE.pdf.
+// 3) Edit the 'content' object below to update text.
+// 4) Export this component as index.jsx in a Vite/CRA repo and deploy to GitHub Pages (see steps I'll give in chat).
+// =========================
+
+export default function AcademicElegance() {
+  // ========== THEME ==========
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.href = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap";
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
+  }, []);
+
+  const theme = {
+    bg: "#fbfaf8",
+    text: "#1c1c1c",
+    primary: "#0d2c54",
+    accent: "#bfa45f",
+    muted: "#5c6975",
+  };
+
+  // ========== CONTENT (EN + DE) ==========
+  const content = {
+    en: {
+      nav: {
+        about: "About",
+        projects: "Projects",
+        experience: "Experience",
+        skills: "Skills & Tools",
+        education: "Education",
+        employers: "For Employers",
+        contact: "Contact",
+      },
+      hero: {
+        title: "Muzi (Monica) Chen",
+        subtitle1:
+          "M.A. candidate at Peking University. I translate complex research into business-ready insights; visa-ready / relocation-ready for Germany & EU.",
+        subtitle2:
+          "Target Roles: UX Research · Human–AI Interaction · User-Centered Evaluation",
+        highlightsTitle: "Three Highlights",
+        highlights: [
+          "Big-tech × research collaboration: MSRA | Xiaomi International | Kuaishou — led user research, cross‑team alignment, and structured reporting to bridge tech and business.",
+          "Methods × tools: Experimental design, usability testing, in‑depth interviews & surveys; SPSS, Python, Microsoft 365 — turning data into decision materials.",
+          "Languages & culture: English IELTS 7.5; German A2 (in progress); Spanish A2 (in progress); native Chinese. Experienced in cross‑cultural teamwork & business communication.",
+        ],
+        ctas: {
+          cv: "Download CV (PDF)",
+          email: "Email Me",
+          linkedin: "LinkedIn",
+        },
+      },
+      projects: {
+        title: "Portfolio / Projects",
+        note: "Each card follows: Context → Goal → Role → Methods → Outcome/Impact",
+        items: [
+          {
+            company: "Xiaomi International | Pre‑Sales Tech",
+            lines: [
+              "Context: During EU & MENA expansion, pre‑sales needed to present complex solutions in client‑friendly ways.",
+              "Goal: Streamline B2B pre‑sales communication; improve clarity and consistency.",
+              "My role: As the only member with psychology & comms background, I led structured rewrites of tech docs, presentation optimization, and cross‑language coordination.",
+              "Methods: 5+ cross‑region meetings to define client pain points; rebuilt narrative with visual templates; organized client feedback loops.",
+              "Outcome/Impact: Delivered 15+ revised solution decks; reduced cross‑team rework; +20% proposal acceptance; established unified PPT & script templates.",
+            ],
+          },
+          {
+            company: "TikTok | User Research",
+            lines: [
+              "Context: Needed insights on individual usage patterns in short‑video interaction to guide feature optimization.",
+              "Goal: Analyze motivations and self‑control failure mechanisms to inform strategy.",
+              "My role: Data cleaning, survey design, visualization; independently produced analysis & user personas.",
+              "Methods: 433 responses; EFA & SEM in SPSS; co‑interpreted with content ops team.",
+              "Outcome/Impact: Report adopted for internal training; the ‘self‑regulation failure’ model later fed into academic work and an English manuscript.",
+            ],
+          },
+          {
+            company: "MSRA | Academic Collaboration",
+            lines: [
+              "Context: Cross‑disciplinary AI teams required tight academic–engineering handoff.",
+              "Goal: Standardize research docs & minutes for smooth collaboration and traceability.",
+              "My role: Built documentation system and wrote weekly minutes; aligned RAs & engineers; tracked progress & outputs.",
+              "Methods: Unified templates; consolidated 4 sub‑projects’ data abstracts; led weekly action tracking.",
+              "Outcome/Impact: Improved coordination; materials used in academic exchanges; provided an operational blueprint for future cross‑group projects.",
+            ],
+          },
+          {
+            company: "Tsinghua | Cognitive & AI Lab (RA)",
+            lines: [
+              "Context: Lab compares human vs AI behavior in complex map navigation (6,000+ participants; 10k+ paths).",
+              "Goal: Extract key spatial features predicting human navigation difficulty; build human–AI comparability metrics.",
+              "My role: Task design & scripting; data collection; feature extraction & visualization; difficulty prediction; hand‑off with algorithms team.",
+              "Methods: Python quantification over 10,000+ maps (path length, turns, cul‑de‑sacs, branching complexity…); behavior metrics (RT, error rate, path deviation); statistical modeling.",
+              "Outcome/Impact: Identified 80+ significant spatial features; standardized scripts adopted by the lab; results feeding AI–Human comparison papers.",
+            ],
+          },
+          {
+            company: "Poly Real Estate | Persona Project",
+            lines: [
+              "Context: Group sought data‑driven buyer personas for marketing decisions.",
+              "Goal: Build segmentation model to guide strategy.",
+              "My role: Data prep & persona visualization; wrote deliverables; co‑presented to client.",
+              "Methods: CRM + survey fusion; dual‑axis (behavior × psych) personas; executive charts.",
+              "Outcome/Impact: 3 core personas integrated into the annual market report; my chart templates adopted internally.",
+            ],
+          },
+        ],
+      },
+      experience: {
+        title: "Experience",
+        groups: [
+          {
+            name: "Industry Experience",
+            items: [
+              {
+                role: "Xiaomi – International Pre‑Sales Technical Engineer",
+                period: "Apr 2025 – Oct 2025 · Beijing",
+                bullets: [
+                  "Translated complex solutions into client‑ready decks to raise win‑rates.",
+                  "Coordinated engineering, sales, and overseas market needs across meetings.",
+                  "Optimized B2B deck & script templates into a reusable package.",
+                ],
+                tags: [
+                  "cross‑functional",
+                  "communication bridge",
+                  "structured reporting",
+                  "stakeholder alignment",
+                ],
+              },
+              {
+                role: "Microsoft (MSRA) – Academic Collaboration",
+                period: "Aug 2024 – Dec 2024 · Beijing",
+                bullets: [
+                  "Supported cross‑disciplinary AI projects: abstracts, doc management, sync meetings.",
+                  "Consolidated sub‑project progress; created reporting templates; promo shorts.",
+                  "Wrote minutes & progress reports to keep research & engineering aligned.",
+                ],
+                tags: [
+                  "academic‑engineering alignment",
+                  "knowledge management",
+                  "structured documentation",
+                ],
+              },
+              {
+                role: "Kuaishou – User Research",
+                period: "Apr 2024 – Aug 2024 · Beijing",
+                bullets: [
+                  "Segmentation using logs & persona features; labeling framework design.",
+                  "Clustering (K‑means / hierarchical), RFM scoring; stability via silhouette & CV.",
+                  "Mapped segments to channels & push strategies; designed & tracked A/B metrics.",
+                ],
+                tags: [
+                  "persona segmentation",
+                  "audience targeting",
+                  "clustering",
+                  "A/B testing",
+                  "stakeholder‑ready decks",
+                ],
+              },
+            ],
+          },
+          {
+            name: "Research Experience",
+            items: [
+              {
+                role: "Tsinghua University – Cognitive & AI Lab (RA)",
+                period: "May 2025 – Sep 2025 · Beijing",
+                bullets: [
+                  "Spatial navigation difficulty & AI simulations; 6,000+ participants.",
+                  "Designed tasks, recruitment pipelines, and validation checks.",
+                  "Extracted 80+ spatial features; built difficulty predictors.",
+                ],
+                tags: [
+                  "experimental design",
+                  "data extraction",
+                  "AI‑human comparison",
+                  "pipeline building",
+                ],
+              },
+              {
+                role: "Short Video Motivation – Independent Study",
+                period: "Apr 2024 – Nov 2024 · Peking University",
+                bullets: [
+                  "Model: Motivation → Control Failure → Psychological Outcomes (SDT × SCT).",
+                  "433 responses; SEM; English manuscript submitted (SSCI Q1).",
+                  "Academic writing & visualization for decision audiences.",
+                ],
+                tags: [
+                  "SDT",
+                  "SEM",
+                  "academic writing",
+                ],
+              },
+              {
+                role: "Poly Real Estate – User Persona Consulting",
+                period: "Oct 2023 – Dec 2023 · Beijing",
+                bullets: [
+                  "Integrated CRM & survey data; built 3 core personas.",
+                  "Cleaned data with Excel/Python; clustering analysis.",
+                  "Decision charts; contributed to group market report.",
+                ],
+                tags: [
+                  "data‑driven insight",
+                  "persona modeling",
+                  "visual storytelling",
+                  "business presentation",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      skills: {
+        title: "Skills & Tools",
+        blocks: [
+          {
+            title: "User Research & Evaluation",
+            lines: [
+              "Usability Testing · User Interviews · Surveys & Psychometrics",
+              "Persona Segmentation & Clustering · Journey Mapping · Evaluation & Reporting",
+              "A/B Testing & KPI Monitoring · Usability Scoring & Feedback Analysis",
+            ],
+          },
+          {
+            title: "Research Methods",
+            lines: [
+              "Experimental Design · Survey Analysis · SEM",
+              "Qualitative Interview & Thematic Coding · Content Analysis · Mixed‑Methods",
+              "Large‑scale Human Studies · AI–Human Comparative Studies · Media Psych × HCI/HAI",
+            ],
+          },
+          {
+            title: "Data & Tools",
+            lines: [
+              "SPSS · Python · Excel",
+              "Matplotlib · Plotly · Power BI",
+              "Microsoft 365 · Notion · Google Workspace · Jira · Trello",
+              "Figma · Miro · Axure (lo‑fi)",
+              "Qualtrics · SurveyMonkey · NVivo",
+              "GitHub · Overleaf",
+            ],
+          },
+          {
+            title: "Communication & Soft Skills",
+            lines: [
+              "Structured Reporting · Cross‑functional Collaboration",
+              "Stakeholder‑ready Presentation · Multilingual Communication",
+              "Project Coordination & Documentation · Academic Writing (EN/ZH)",
+              "Cross‑cultural Teamwork",
+            ],
+          },
+          {
+            title: "Languages",
+            lines: [
+              "English (C1), IELTS 7.5",
+              "German A2 (in progress)",
+              "Spanish A2 (in progress)",
+              "Chinese (native)",
+            ],
+          },
+        ],
+      },
+      education: {
+        title: "Education & Honors",
+        schools: [
+          {
+            name: "Peking University — M.A. in New Media",
+            period: "2023 – 2026 · School of New Media",
+            bullets: [
+              "Focus: Media Psychology; Courses: Data Mining, Online Public Opinion, Research Methods, Social Psychology.",
+              "First‑Class Scholarship (2024, highest level); Peer Psychological Support Mentor.",
+              "Independent short‑video study (Motivation–Control–Wellbeing model), submitted to New Media & Society.",
+              "Core member on 2024 & 2025 National Social Science Fund applications.",
+            ],
+            tags: [
+              "media psychology",
+              "human–AI perception",
+              "data mining",
+              "social cognition",
+              "cross‑cultural research",
+            ],
+          },
+          {
+            name: "Tampere University (Exchange)",
+            period: "2025 · Faculty of Social Sciences",
+            bullets: [
+              "Social & Personality Psychology; Intercultural Communication; Experimental Design.",
+              "English‑medium instruction; Finnish A1–A2 elective.",
+              "Seminars in intercultural psychology and research design projects.",
+            ],
+            tags: [
+              "international study",
+              "social/personality psychology",
+              "intercultural communication",
+              "English academic writing",
+            ],
+          },
+          {
+            name: "Southwest Jiaotong University — BSc Applied Psychology",
+            period: "2019 – 2023 · School of Public Administration",
+            bullets: [
+              "Core: Statistics, Experimental/Cognitive/Social Psychology, Psychometrics & SPSS.",
+              "Thesis: Sensation Seeking, Psychological Capital, and Internet Addiction among undergrads.",
+              "SRTP undergraduate research training participant.",
+            ],
+            tags: [
+              "applied psychology",
+              "experimental design",
+              "data analysis",
+              "academic writing",
+              "leadership",
+            ],
+          },
+        ],
+      },
+      employers: {
+        title: "For Employers (Germany/EU Friendly)",
+        roles:
+          "UX Researcher · User Research Specialist · Human–AI Interaction Evaluation · Junior Product Research PM · Mixed‑Methods Researcher",
+        keywords:
+          "User Research · Human–AI Interaction · Cognitive Evaluation · Usability Testing · Experimental Design · Data Analysis · Cross‑functional Collaboration · Stakeholder Communication",
+        iCanHelp: [
+          {
+            t: "Research‑to‑Insight Translation",
+            d: "Turn complex tech & psych findings into business‑readable, actionable decisions.",
+          },
+          {
+            t: "Structured Reporting",
+            d: "Build standardized reporting templates & analysis frameworks for efficient information integration.",
+          },
+          {
+            t: "Usability & Experience Evaluation",
+            d: "Plan & run tests, surveys, interviews; diagnose interaction pain points & bottlenecks.",
+          },
+          {
+            t: "Cross‑functional Alignment",
+            d: "Bridge research and product to align tech, design, and market for execution speed.",
+          },
+          {
+            t: "AI–Human Comparative Research",
+            d: "Design human‑vs‑AI studies and multimodal perception analyses with explainable outputs.",
+          },
+        ],
+        availability: [
+          "Visa‑ready for Germany/EU; full‑time or fellowship/trainee.",
+          "Remote or on‑site; can start from Autumn 2025 (flexible).",
+          "Experienced in EN/ZH cross‑cultural communication.",
+        ],
+        downloads: "1‑Page CV (see top‑right Download)",
+      },
+      contact: {
+        title: "Contact",
+        lines: [
+          "Personal: monicachen0319@gmail.com",
+          "Academic: muzichen@stu.pku.edu.cn",
+          "LinkedIn: linkedin.com/in/muzichen",
+        ],
+      },
+    },
+
+    de: {
+      nav: {
+        about: "Über mich",
+        projects: "Projekte",
+        experience: "Erfahrung",
+        skills: "Kompetenzen",
+        education: "Ausbildung",
+        employers: "Für Arbeitgeber",
+        contact: "Kontakt",
+      },
+      hero: {
+        title: "Muzi (Monica) Chen",
+        subtitle1:
+          "Masterstudentin an der Peking‑Universität. Ich übersetze komplexe Forschung in geschäftsrelevante Insights; visumsbereit/umzugsbereit für Deutschland & EU.",
+        subtitle2:
+          "Zielrollen: UX Research · Human–AI Interaction · Nutzerzentrierte Evaluation",
+        highlightsTitle: "Drei Highlights",
+        highlights: [
+          "Big‑Tech × Forschung: MSRA | Xiaomi International | Kuaishou — User Research, Abstimmung zwischen Teams und strukturierte Reports – Brücke zwischen Technik und Business.",
+          "Methoden × Tools: Versuchsdesign, Usability‑Tests, Tiefeninterviews & Umfragen; SPSS, Python, Microsoft 365 – Daten in Entscheidungsgrundlagen überführen.",
+          "Sprachen & Kultur: Englisch IELTS 7.5; Deutsch A2 (laufend); Spanisch A2 (laufend); Chinesisch Muttersprache. Erfahren in interkultureller Zusammenarbeit.",
+        ],
+        ctas: {
+          cv: "Lebenslauf (PDF)",
+          email: "E‑Mail senden",
+          linkedin: "LinkedIn",
+        },
+      },
+      projects: {
+        title: "Portfolio / Projekte",
+        note: "Jede Karte: Kontext → Ziel → Rolle → Methoden → Ergebnis/Wirkung",
+        items: [
+          {
+            company: "Xiaomi International | Pre‑Sales Tech",
+            lines: [
+              "Kontext: Für EU & MENA brauchte Pre‑Sales verständliche Präsentationen komplexer Lösungen.",
+              "Ziel: B2B‑Kommunikation verschlanken; Klarheit & Konsistenz erhöhen.",
+              "Meine Rolle: Als einziges Mitglied mit Psychologie‑ & Kommunikationshintergrund: Struktur‑Rewrites, Präsentationsoptimierung, mehrsprachige Koordination.",
+              "Methoden: 5+ bereichsübergreifende Meetings; Narrativ mit visuellen Vorlagen neu aufgebaut; Kundenfeedback organisiert.",
+              "Ergebnis/Wirkung: 15+ überarbeitete Decks; weniger Nacharbeit; +20% Zusagen; einheitliche PPT‑ & Skript‑Templates etabliert.",
+            ],
+          },
+          {
+            company: "TikTok | User Research",
+            lines: [
+              "Kontext: Einblicke in individuelle Kurzvideo‑Nutzung zur Feature‑Optimierung.",
+              "Ziel: Motive & Mechanismen der Selbstkontroll‑Fehlschläge analysieren.",
+              "Meine Rolle: Datenbereinigung, Fragebogendesign, Visualisierung; eigenständige Analyse & Personas.",
+              "Methoden: 433 Antworten; EFA & SEM in SPSS; Co‑Interpretation mit Content‑Ops.",
+              "Ergebnis/Wirkung: Report für internes Training; das Modell zur Selbstregulations‑
+Fehlschlag floss in eine englische wissenschaftliche Arbeit ein.",
+            ],
+          },
+          {
+            company: "MSRA | Academic Collaboration",
+            lines: [
+              "Kontext: Enges akademisch‑technisches Handover in KI‑Teams nötig.",
+              "Ziel: Forschungsdokus & Protokolle standardisieren – reibungslose Kollaboration & Nachverfolgbarkeit.",
+              "Meine Rolle: Doku‑System aufgebaut, wöchentliche Protokolle; RAs & Engineers ausgerichtet; Fortschritt & Outputs getrackt.",
+              "Methoden: Vereinheitlichte Templates; 4 Teilprojekte konsolidiert; wöchentliches Action‑Tracking.",
+              "Ergebnis/Wirkung: Bessere Koordination; Unterlagen für akademischen Austausch genutzt; Blaupause für künftige Projekte.",
+            ],
+          },
+          {
+            company: "Tsinghua | Cognitive & AI Lab (RA)",
+            lines: [
+              "Kontext: Vergleich Mensch vs. KI bei komplexer Karten‑Navigation (6.000+ Teilnehmende, 10k+ Pfade).",
+              "Ziel: Räumliche Schlüsselfeatures zur Vorhersage menschlicher Schwierigkeit; Metriken für Mensch‑KI‑Vergleich.",
+              "Meine Rolle: Aufgabendesign & Scripting; Datenerhebung; Feature‑Extraktion & Visualisierung; Schwierigkeits‑Vorhersage; Übergabe an Algorithmusteam.",
+              "Methoden: Python‑Quantifizierung (Pfadlänge, Abzweigungen, Sackgassen, Verzweigungskomplexität …); Verhaltensmaße (RT, Fehler, Abweichung); statistische Modelle.",
+              "Ergebnis/Wirkung: 80+ signifikante räumliche Features; Skripte standardisiert übernommen; Ergebnisse fließen in Papers zum Mensch‑KI‑Vergleich.",
+            ],
+          },
+          {
+            company: "Poly Real Estate | Persona‑Projekt",
+            lines: [
+              "Kontext: Datengetriebene Käufer‑Personas für Marketingentscheidungen.",
+              "Ziel: Segmentierungsmodell für Strategieaufbau.",
+              "Meine Rolle: Datenvorbereitung & Persona‑Visualisierung; Deliverables; Kundentermin.",
+              "Methoden: CRM + Umfrage; Personas entlang Verhalten × Psychologie; Management‑Charts.",
+              "Ergebnis/Wirkung: 3 Kern‑Personas in Jahresbericht; meine Chart‑Vorlagen intern übernommen.",
+            ],
+          },
+        ],
+      },
+      experience: {
+        title: "Erfahrung",
+        groups: [
+          {
+            name: "Industrie",
+            items: [
+              {
+                role: "Xiaomi – International Pre‑Sales Technical Engineer",
+                period: "Apr 2025 – Okt 2025 · Peking",
+                bullets: [
+                  "Komplexe Lösungen in kundentaugliche Decks übersetzt; Win‑Rates erhöht.",
+                  "Abstimmung zwischen Engineering, Sales und Auslandsmärkten.",
+                  "B2B‑Deck‑ & Skript‑Templates zu wiederverwendbarem Paket optimiert.",
+                ],
+                tags: [
+                  "cross‑functional",
+                  "Kommunikationsbrücke",
+                  "strukturierte Reports",
+                  "Stakeholder‑Alignment",
+                ],
+              },
+              {
+                role: "Microsoft (MSRA) – Academic Collaboration",
+                period: "Aug 2024 – Dez 2024 · Peking",
+                bullets: [
+                  "KI‑Projekte unterstützt: Abstracts, Doku‑Management, Sync‑Meetings.",
+                  "Teilprojekt‑Fortschritt konsolidiert; Reporting‑Templates; Promo‑Shorts.",
+                  "Protokolle & Reports – Forschung & Engineering synchron gehalten.",
+                ],
+                tags: [
+                  "Academic‑Engineering Alignment",
+                  "Wissensmanagement",
+                  "Dokumentationsstandards",
+                ],
+              },
+              {
+                role: "Kuaishou – User Research",
+                period: "Apr 2024 – Aug 2024 · Peking",
+                bullets: [
+                  "Segmentierung via Logs & Persona‑Features; Label‑Framework.",
+                  "Clustering (K‑means/hierarchisch), RFM; Stabilität: Silhouette & CV.",
+                  "Segments → Kanäle & Push; A/B‑Metriken entworfen & getrackt.",
+                ],
+                tags: [
+                  "Persona‑Segmentierung",
+                  "Audience Targeting",
+                  "Clustering",
+                  "A/B‑Tests",
+                  "Stakeholder‑Decks",
+                ],
+              },
+            ],
+          },
+          {
+            name: "Forschung",
+            items: [
+              {
+                role: "Tsinghua University – Cognitive & AI Lab (RA)",
+                period: "Mai 2025 – Sep 2025 · Peking",
+                bullets: [
+                  "Navigationsschwierigkeit & KI‑Simulationen; 6.000+ Teilnehmende.",
+                  "Aufgaben, Rekrutierung, Validierungschecks.",
+                  "80+ räumliche Features extrahiert; Prädiktoren erstellt.",
+                ],
+                tags: [
+                  "Versuchsdesign",
+                  "Datenextraktion",
+                  "Mensch‑KI‑Vergleich",
+                  "Pipelines",
+                ],
+              },
+              {
+                role: "Short Video Motivation – Eigenes Projekt",
+                period: "Apr 2024 – Nov 2024 · Peking Universität",
+                bullets: [
+                  "Modell: Motivation → Kontrollverlust → psychologische Outcomes (SDT × SCT).",
+                  "433 Antworten; SEM; englisches Manuskript (SSCI Q1) eingereicht.",
+                  "Academic Writing & Visualisierung für Stakeholder.",
+                ],
+                tags: ["SDT", "SEM", "wissenschaftliches Schreiben"],
+              },
+              {
+                role: "Poly Real Estate – Persona‑Beratung",
+                period: "Okt 2023 – Dez 2023 · Peking",
+                bullets: [
+                  "CRM & Umfrage vereint; 3 Kern‑Personas.",
+                  "Excel/Python‑Cleaning; Clustering‑Analysen.",
+                  "Charts für Entscheidungen; Gruppen‑Marktbericht.",
+                ],
+                tags: [
+                  "datengetriebene Insights",
+                  "Persona‑Modellierung",
+                  "Visual Storytelling",
+                  "Business‑Präsentation",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      skills: {
+        title: "Kompetenzen & Tools",
+        blocks: [
+          {
+            title: "User Research & Evaluation",
+            lines: [
+              "Usability‑Tests · Interviews · Umfragen & Psychometrie",
+              "Persona‑Segmentierung & Clustering · Journey Mapping · Evaluation & Reporting",
+              "A/B‑Tests & KPI‑Monitoring · Usability‑Scoring & Feedback‑Analyse",
+            ],
+          },
+          {
+            title: "Forschungsmethoden",
+            lines: [
+              "Versuchsdesign · Umfrageanalyse · SEM",
+              "Qualitative Interviews & thematische Kodierung · Inhaltsanalyse · Mixed‑Methods",
+              "Großskalige Humanstudien · Mensch‑KI‑Vergleich · Medienpsych × HCI/HAI",
+            ],
+          },
+          {
+            title: "Daten & Tools",
+            lines: [
+              "SPSS · Python · Excel",
+              "Matplotlib · Plotly · Power BI",
+              "Microsoft 365 · Notion · Google Workspace · Jira · Trello",
+              "Figma · Miro · Axure (Lo‑Fi)",
+              "Qualtrics · SurveyMonkey · NVivo",
+              "GitHub · Overleaf",
+            ],
+          },
+          {
+            title: "Kommunikation & Soft Skills",
+            lines: [
+              "Strukturierte Reports · bereichsübergreifende Zusammenarbeit",
+              "Executive‑Präsentationen · Mehrsprachige Kommunikation",
+              "Projektkoordination & Dokumentation · Academic Writing (EN/ZH)",
+              "Interkulturelle Teamarbeit",
+            ],
+          },
+          {
+            title: "Sprachen",
+            lines: [
+              "Englisch (C1), IELTS 7.5",
+              "Deutsch A2 (laufend)",
+              "Spanisch A2 (laufend)",
+              "Chinesisch (Muttersprache)",
+            ],
+          },
+        ],
+      },
+      education: {
+        title: "Ausbildung & Auszeichnungen",
+        schools: [
+          {
+            name: "Peking‑Universität — M.A. New Media",
+            period: "2023 – 2026 · School of New Media",
+            bullets: [
+              "Schwerpunkt: Medienpsychologie; Kurse: Data Mining, Online Public Opinion, Forschungsmethoden, Sozialpsychologie.",
+              "First‑Class Scholarship (2024, höchste Stufe); Peer Psychological Support Mentor.",
+              "Eigenständige Kurzvideo‑Studie (Motivation–Kontrolle–Wohlbefinden), bei New Media & Society eingereicht.",
+              "Kernmitglied bei Anträgen zum Nationalen Sozialwissenschaftsfonds 2024 & 2025.",
+            ],
+            tags: [
+              "Medienpsychologie",
+              "Human–AI‑Wahrnehmung",
+              "Data Mining",
+              "soziale Kognition",
+              "interkulturelle Forschung",
+            ],
+          },
+          {
+            name: "Tampere University (Austausch)",
+            period: "2025 · Fakultät Sozialwissenschaften",
+            bullets: [
+              "Sozial‑ & Persönlichkeitspsychologie; Interkulturelle Kommunikation; Versuchsdesign.",
+              "Englischsprachig; Finnisch A1–A2 als Wahlfach.",
+              "Seminare zu interkultureller Psychologie & Forschungsdesign.",
+            ],
+            tags: [
+              "internationales Studium",
+              "Sozial/ Persönlichkeitspsychologie",
+              "interkulturelle Kommunikation",
+              "akademisches Schreiben (EN)",
+            ],
+          },
+          {
+            name: "Southwest Jiaotong University — B.Sc. Angewandte Psychologie",
+            period: "2019 – 2023 · School of Public Administration",
+            bullets: [
+              "Kerne: Statistik, Experimental‑/Kognitions‑/Sozialpsychologie, Psychometrie & SPSS.",
+              "Abschlussarbeit: Sensation Seeking, Psychological Capital & Internetabhängigkeit.",
+              "SRTP‑Forschungsprogramm.",
+            ],
+            tags: [
+              "angewandte Psychologie",
+              "Versuchsdesign",
+              "Datenanalyse",
+              "wissenschaftliches Schreiben",
+              "Führung",
+            ],
+          },
+        ],
+      },
+      employers: {
+        title: "Für Arbeitgeber (DE/EU‑freundlich)",
+        roles:
+          "UX Researcher · User Research Specialist · Human–AI Interaction Evaluation · Junior Product Research PM · Mixed‑Methods Researcher",
+        keywords:
+          "User Research · Human–AI Interaction · Cognitive Evaluation · Usability Testing · Experimental Design · Data Analysis · Cross‑functional Collaboration · Stakeholder Communication",
+        iCanHelp: [
+          { t: "Research‑to‑Insight Translation", d: "Komplexe Tech‑ & Forschungsbefunde in umsetzbare, verständliche Entscheidungsgrundlagen übersetzen." },
+          { t: "Strukturierte Reports", d: "Standardisierte Reporting‑Templates & Analyse‑Frameworks für effiziente Informationsintegration bauen." },
+          { t: "Usability & Experience Evaluation", d: "Tests, Umfragen, Interviews planen & durchführen; Interaktions‑Pain‑Points identifizieren." },
+          { t: "Cross‑functional Alignment", d: "Brücke zwischen Research & Produkt – Tech, Design & Markt ausrichten." },
+          { t: "AI–Human Comparative Research", d: "Mensch‑vs‑KI‑Studien & multimodale Wahrnehmungsanalysen mit erklärbaren Outputs designen." },
+        ],
+        availability: [
+          "Visumsbereit für Deutschland/EU; Vollzeit oder Fellowship/Trainee.",
+          "Remote oder vor Ort; Start ab Herbst 2025 (flexibel).",
+          "Erfahrung in EN/ZH‑Kommunikation und interkultureller Zusammenarbeit.",
+        ],
+        downloads: "1‑seitiger Lebenslauf (siehe oben rechts)",
+      },
+      contact: {
+        title: "Kontakt",
+        lines: [
+          "Persönlich: monicachen0319@gmail.com",
+          "Akademisch: muzichen@stu.pku.edu.cn",
+          "LinkedIn: linkedin.com/in/muzichen",
+        ],
+      },
+    },
+  };
+
+  // ========== UI STATE ==========
+  const [lang, setLang] = useState("en");
+  const t = useMemo(() => content[lang], [lang]);
+
+  // ========== STYLES ==========
+  return (
+    <div
+      style={{
+        "--bg": theme.bg,
+        "--text": theme.text,
+        "--primary": theme.primary,
+        "--accent": theme.accent,
+        "--muted": theme.muted,
+        fontFamily: "Cormorant Garamond, serif",
+      } as React.CSSProperties}
+      className="min-h-screen bg-[var(--bg)] text-[var(--text)]"
+    >
+      <style>{`
+        html { scroll-behavior: smooth; }
+        .container { max-width: 1050px; }
+        .serif { font-family: 'Cormorant Garamond', serif; }
+        .elev { box-shadow: 0 8px 30px rgba(13,44,84,.08); }
+        .pill { border-radius: 9999px; }
+      `}</style>
+
+      {/* NAVBAR */}
+      <header className="sticky top-0 z-40 backdrop-blur bg-[var(--bg)]/80 border-b border-[var(--muted)]/10">
+        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-[var(--primary)]/90" />
+            <div className="text-lg font-semibold tracking-wide text-[var(--primary)]">Muzi Chen</div>
+          </div>
+
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            <a href="#about" className="hover:text-[var(--primary)]">{t.nav.about}</a>
+            <a href="#projects" className="hover:text-[var(--primary)]">{t.nav.projects}</a>
+            <a href="#experience" className="hover:text-[var(--primary)]">{t.nav.experience}</a>
+            <a href="#skills" className="hover:text-[var(--primary)]">{t.nav.skills}</a>
+            <a href="#education" className="hover:text-[var(--primary)]">{t.nav.education}</a>
+            <a href="#employers" className="hover:text-[var(--primary)]">{t.nav.employers}</a>
+            <a href="#contact" className="hover:text-[var(--primary)]">{t.nav.contact}</a>
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <a
+              href="/assets/CV_MuziChen_EN.pdf"
+              className="hidden sm:inline-block pill px-4 py-2 text-sm elev border border-[var(--accent)]/30 hover:border-[var(--accent)] text-[var(--primary)]"
+              target="_blank"
+            >
+              {t.hero.ctas.cv}
+            </a>
+            <select
+              aria-label="Language"
+              value={lang}
+              onChange={(e) => setLang(e.target.value)}
+              className="pill border border-[var(--muted)]/30 px-3 py-2 bg-white text-sm"
+            >
+              <option value="en">English</option>
+              <option value="de">Deutsch</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      {/* HERO / ABOUT */}
+      <section id="about" className="container mx-auto px-4 py-10 md:py-16">
+        <div className="grid md:grid-cols-[280px_1fr] gap-8 items-start">
+          <div className="flex flex-col items-center gap-4">
+            <img
+              src="/assets/profile.jpg"
+              alt="Profile"
+              className="w-56 h-56 object-cover rounded-2xl elev border border-[var(--muted)]/20"
+            />
+            <div className="flex gap-2">
+              <a
+                href="mailto:monicachen0319@gmail.com"
+                className="pill px-4 py-2 text-sm bg-[var(--primary)] text-white hover:opacity-95"
+              >
+                {t.hero.ctas.email}
+              </a>
+              <a
+                href="https://www.linkedin.com/in/muzichen"
+                target="_blank"
+                className="pill px-4 py-2 text-sm border border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white"
+              >
+                {t.hero.ctas.linkedin}
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h1 className="text-3xl md:text-4xl font-semibold text-[var(--primary)] serif">
+              {t.hero.title}
+            </h1>
+            <p className="mt-4 text-[var(--muted)] leading-7">{t.hero.subtitle1}</p>
+            <p className="mt-2 leading-7">{t.hero.subtitle2}</p>
+
+            <div className="mt-6 border-l-4 border-[var(--accent)] pl-4">
+              <div className="font-semibold text-[var(--primary)]">{t.hero.highlightsTitle}</div>
+              <ul className="mt-2 space-y-2 list-disc list-inside">
+                {t.hero.highlights.map((h, i) => (
+                  <li key={i}>{h}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROJECTS */}
+      <section id="projects" className="bg-white/70 border-y border-[var(--muted)]/10">
+        <div className="container mx-auto px-4 py-12">
+          <h2 className="text-2xl font-semibold serif text-[var(--primary)]">{t.projects.title}</h2>
+          <p className="text-sm text-[var(--muted)] mt-1">{t.projects.note}</p>
+
+          <div className="mt-6 grid md:grid-cols-2 gap-6">
+            {t.projects.items.map((p, idx) => (
+              <article key={idx} className="rounded-2xl elev bg-[var(--bg)] p-6 border border-[var(--muted)]/10">
+                <div className="text-lg font-semibold text-[var(--primary)]">{p.company}</div>
+                <ul className="mt-3 space-y-2 text-sm leading-6">
+                  {p.lines.map((line, i) => (
+                    <li key={i}>• {line}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EXPERIENCE */}
+      <section id="experience" className="container mx-auto px-4 py-12">
+        <h2 className="text-2xl font-semibold serif text-[var(--primary)]">{t.experience.title}</h2>
+        <div className="mt-6 grid md:grid-cols-2 gap-6">
+          {t.experience.groups.map((g, gi) => (
+            <div key={gi} className="space-y-6">
+              <div className="text-[var(--accent)] tracking-wide uppercase text-xs">{g.name}</div>
+              {g.items.map((item, i) => (
+                <div key={i} className="rounded-2xl border border-[var(--muted)]/10 p-5 bg-white/60">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="font-semibold">{item.role}</div>
+                    <div className="text-xs text-[var(--muted)]">{item.period}</div>
+                  </div>
+                  <ul className="mt-2 text-sm space-y-1">
+                    {item.bullets.map((b, bi) => (
+                      <li key={bi}>• {b}</li>
+                    ))}
+                  </ul>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {item.tags.map((tag, ti) => (
+                      <span key={ti} className="text-xs pill px-3 py-1 bg-[var(--primary)]/5 border border-[var(--primary)]/20 text-[var(--primary)]">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SKILLS */}
+      <section id="skills" className="bg-white/70 border-y border-[var(--muted)]/10">
+        <div className="container mx-auto px-4 py-12">
+          <h2 className="text-2xl font-semibold serif text-[var(--primary)]">{t.skills.title}</h2>
+          <div className="mt-6 grid md:grid-cols-2 gap-6">
+            {t.skills.blocks.map((b, bi) => (
+              <div key={bi} className="rounded-2xl elev bg-[var(--bg)] p-6 border border-[var(--muted)]/10">
+                <div className="font-semibold text-[var(--primary)]">{b.title}</div>
+                <ul className="mt-3 space-y-1 text-sm">
+                  {b.lines.map((l, li) => (
+                    <li key={li}>• {l}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EDUCATION */}
+      <section id="education" className="container mx-auto px-4 py-12">
+        <h2 className="text-2xl font-semibold serif text-[var(--primary)]">{t.education.title}</h2>
+        <div className="mt-6 space-y-6">
+          {t.education.schools.map((s, si) => (
+            <div key={si} className="rounded-2xl border border-[var(--muted)]/10 p-6 bg-white/60">
+              <div className="flex items-center justify-between">
+                <div className="font-semibold text-lg">{s.name}</div>
+                <div className="text-xs text-[var(--muted)]">{s.period}</div>
+              </div>
+              <ul className="mt-3 space-y-2 text-sm">
+                {s.bullets.map((b, bi) => (
+                  <li key={bi}>• {b}</li>
+                ))}
+              </ul>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {s.tags.map((tag, ti) => (
+                  <span key={ti} className="text-xs pill px-3 py-1 bg-[var(--accent)]/10 border border-[var(--accent)]/30 text-[var(--primary)]">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FOR EMPLOYERS */}
+      <section id="employers" className="bg-white/70 border-y border-[var(--muted)]/10">
+        <div className="container mx-auto px-4 py-12">
+          <h2 className="text-2xl font-semibold serif text-[var(--primary)]">{t.employers.title}</h2>
+          <div className="mt-4 grid lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2 rounded-2xl elev bg-[var(--bg)] p-6 border border-[var(--muted)]/10">
+              <div className="text-sm text-[var(--muted)]">Roles</div>
+              <div className="font-semibold mt-1">{t.employers.roles}</div>
+              <div className="text-sm text-[var(--muted)] mt-4">Keywords</div>
+              <div className="mt-1 text-sm">{t.employers.keywords}</div>
+              <div className="mt-4 grid sm:grid-cols-2 gap-4">
+                {t.employers.iCanHelp.map((c, ci) => (
+                  <div key={ci} className="rounded-xl border border-[var(--muted)]/10 p-4 bg-white/70">
+                    <div className="font-semibold text-[var(--primary)]">{c.t}</div>
+                    <p className="text-sm mt-1 leading-6">{c.d}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <aside className="rounded-2xl elev bg-[var(--bg)] p-6 border border-[var(--muted)]/10">
+              <div className="font-semibold text-[var(--primary)]">Availability & Relocation</div>
+              <ul className="mt-2 text-sm space-y-2">
+                {t.employers.availability.map((a, i) => (
+                  <li key={i}>• {a}</li>
+                ))}
+              </ul>
+              <a
+                href={lang === "de" ? "/assets/CV_MuziChen_DE.pdf" : "/assets/CV_MuziChen_EN.pdf"}
+                target="_blank"
+                className="mt-4 inline-block pill px-4 py-2 text-sm bg-[var(--accent)]/90 text-white hover:opacity-95"
+              >
+                {t.hero.ctas.cv}
+              </a>
+              <div className="mt-2 text-xs text-[var(--muted)]">{t.employers.downloads}</div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="container mx-auto px-4 py-12">
+        <h2 className="text-2xl font-semibold serif text-[var(--primary)]">{t.contact.title}</h2>
+        <div className="mt-4 grid md:grid-cols-2 gap-6">
+          <div className="rounded-2xl elev bg-[var(--bg)] p-6 border border-[var(--muted)]/10">
+            <ul className="space-y-2">
+              {t.contact.lines.map((l, i) => (
+                <li key={i}>• {l}</li>
+              ))}
+            </ul>
+          </div>
+          <form
+            action="https://formspree.io/f/xyyylink" // replace with your Formspree ID or remove
+            method="POST"
+            className="rounded-2xl elev bg-[var(--bg)] p-6 border border-[var(--muted)]/10"
+          >
+            <div className="grid grid-cols-1 gap-3">
+              <input name="name" placeholder="Name" className="border border-[var(--muted)]/20 rounded-lg px-3 py-2" />
+              <input name="email" placeholder="Email" className="border border-[var(--muted)]/20 rounded-lg px-3 py-2" />
+              <textarea name="message" placeholder="Message" className="border border-[var(--muted)]/20 rounded-lg px-3 py-2 h-28" />
+              <button className="pill px-4 py-2 bg-[var(--primary)] text-white hover:opacity-95" type="submit">Send</button>
+            </div>
+          </form>
+        </div>
+        <footer className="mt-10 text-center text-xs text-[var(--muted)]">
+          © {new Date().getFullYear()} Muzi Chen · Academic Elegance · Made with React & Tailwind
+        </footer>
+      </section>
+    </div>
+  );
+}
