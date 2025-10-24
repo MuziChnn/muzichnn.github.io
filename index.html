@@ -41,7 +41,7 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.65;
-      font-size: 17px; /* 更精致一些，比18更秀气 */
+      font-size: 17px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -84,7 +84,6 @@
       margin: .1rem 0 .5rem;
     }
 
-    /* text rhythm */
     p,
     li {
       font-size: 1rem;
@@ -125,7 +124,7 @@
 
     .topbar {
       display: grid;
-      grid-template-columns: auto 1fr auto;  /* brand | menu | controls */
+      grid-template-columns: auto 1fr auto;
       align-items: center;
       gap: 16px;
       padding: 14px 20px;
@@ -157,9 +156,7 @@
       flex-shrink: 0;
     }
 
-    nav {
-      display: block;
-    }
+    nav { display: block; }
     nav ul {
       display: flex;
       justify-content: center;
@@ -246,7 +243,30 @@
       transform: translateY(-1px);
     }
 
-    /* Hamburger "Menu" button (mobile only <860px) */
+    /* tiny button inside project cards */
+    .btn-small {
+      display: inline-block;
+      margin-top: .8rem;
+      font-size: .9rem;
+      line-height: 1.2;
+      padding: .45rem .8rem .5rem;
+      border-radius: 10px;
+      border: 1px solid var(--primary);
+      background: #fff;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      box-shadow: 0 6px 16px rgba(13,44,84,.07);
+      transition: all var(--transition-fast);
+    }
+    .btn-small:hover {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(13,44,84,.14), 0 0 6px rgba(191,164,95,.5);
+      transform: translateY(-2px);
+    }
+
+    /* Hamburger "Menu" button (mobile <860px) */
     .nav-toggle {
       display: none;
       border: 1px solid var(--primary);
@@ -285,18 +305,12 @@
     .nav-toggle .bars::before { top: -6px; }
     .nav-toggle .bars::after  { top:  6px; }
 
-    /* slightly narrower desktop */
     @media (max-width:1180px){
       nav ul { gap: 12px; }
       nav li a { font-size: .9rem; }
       .controls { gap: 8px; }
     }
 
-    /* Tablet & below:
-       - hide horizontal nav
-       - show hamburger
-       - dropdown full-width under header
-    */
     @media (max-width:860px){
       .nav-toggle { display: inline-flex; }
       header.site nav ul {
@@ -557,6 +571,21 @@
       }
     }
 
+    /* Languages card spans full width row */
+    .lang-card {
+      grid-column: 1 / -1;
+    }
+    .lang-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+    }
+    @media (max-width:500px){
+      .lang-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* footer */
     footer {
       color: var(--muted);
@@ -605,7 +634,7 @@
         </ul>
       </nav>
 
-      <!-- Controls: hamburger, lang toggle, CV -->
+      <!-- Controls -->
       <div class="controls">
         <!-- Hamburger / Menu (mobile) -->
         <button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false">
@@ -683,45 +712,6 @@
       </div>
 
       <div class="proj-grid">
-        <!-- Xiaomi -->
-        <article class="card proj reveal-base">
-          <h3>◆ Xiaomi International | Pre-Sales Tech</h3>
-          <p>
-            <b data-i18n="bg">Background</b> —
-            <span data-i18n="proj_xiaomi_bg">
-              The International Division needed to present complex technical solutions
-              clearly to clients across Europe and the Middle East.
-            </span>
-          </p>
-          <p>
-            <b data-i18n="goal">Goal</b> —
-            <span data-i18n="proj_xiaomi_goal">
-              Optimize B2B pre-sales communication and improve clarity/consistency in
-              solution presentations.
-            </span>
-          </p>
-          <p>
-            <b data-i18n="role">Role</b> —
-            <span data-i18n="proj_xiaomi_role">
-              Led content rewriting, presentation design, and cross-language collaboration
-              as the psychology/communication specialist.
-            </span>
-          </p>
-          <p>
-            <b data-i18n="methods">Methods</b> —
-            <span data-i18n="proj_xiaomi_methods" data-metric>
-              5 cross-regional meetings; co-defined pain points; rebuilt logic with
-              visual templates; organized feedback loops.
-            </span>
-          </p>
-          <p>
-            <b data-i18n="results">Results</b> —
-            <span data-i18n="proj_xiaomi_results" data-metric>
-              15+ revised decks; ~20% approval increase; unified PPT &amp; narrative template.
-            </span>
-          </p>
-        </article>
-
         <!-- TikTok -->
         <article class="card proj reveal-base">
           <h3>◆ TikTok | User Research</h3>
@@ -756,6 +746,10 @@
               Report adopted for training; model inspired a paper under review.
             </span>
           </p>
+
+          <a class="btn-small" href="assets/tiktok_case.pdf" target="_blank" rel="noopener" data-i18n="proj_cta">
+            View Project
+          </a>
         </article>
 
         <!-- MSRA -->
@@ -792,6 +786,10 @@
               Improved efficiency; reusable docs for exchanges; operational model.
             </span>
           </p>
+
+          <a class="btn-small" href="assets/msra_collab_overview.pdf" target="_blank" rel="noopener" data-i18n="proj_cta">
+            View Project
+          </a>
         </article>
 
         <!-- Tsinghua -->
@@ -832,6 +830,10 @@
               for AI–Human comparison papers.
             </span>
           </p>
+
+          <a class="btn-small" href="assets/tsinghua_navigation_study.pdf" target="_blank" rel="noopener" data-i18n="proj_cta">
+            View Project
+          </a>
         </article>
 
         <!-- Poly -->
@@ -869,6 +871,10 @@
               3 key personas in annual report; standardized viz templates.
             </span>
           </p>
+
+          <a class="btn-small" href="assets/poly_persona_deck.pdf" target="_blank" rel="noopener" data-i18n="proj_cta">
+            View Project
+          </a>
         </article>
       </div>
     </section>
@@ -1066,14 +1072,19 @@
           </p>
         </div>
 
-        <div class="card reveal-base">
+        <!-- Languages full-width -->
+        <div class="card lang-card reveal-base">
           <h3 data-i18n="skills_lang">Languages</h3>
-          <ul class="bul">
-            <li data-i18n="lang_en"><b>English:</b> C1, IELTS 7.5</li>
-            <li data-i18n="lang_de"><b>German:</b> A2 (in progress)</li>
-            <li data-i18n="lang_es"><b>Spanish:</b> A2 (in progress)</li>
-            <li data-i18n="lang_zh"><b>Chinese:</b> Native</li>
-          </ul>
+          <div class="lang-inner">
+            <ul class="bul">
+              <li data-i18n="lang_en"><b>English:</b> C1, IELTS 7.5</li>
+              <li data-i18n="lang_de"><b>German:</b> A2 (in progress)</li>
+            </ul>
+            <ul class="bul">
+              <li data-i18n="lang_es"><b>Spanish:</b> A2 (in progress)</li>
+              <li data-i18n="lang_zh"><b>Chinese:</b> Native</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -1229,21 +1240,12 @@
 
         // projects
         proj_title: "Portfolio / Projects",
+        proj_cta: "View Project",
         bg: "Background",
         goal: "Goal",
         role: "Role",
         methods: "Methods",
         results: "Results",
-        proj_xiaomi_bg:
-          "The International Division needed to present complex technical solutions clearly to clients across Europe and the Middle East.",
-        proj_xiaomi_goal:
-          "Optimize B2B pre-sales communication and improve clarity/consistency in solution presentations.",
-        proj_xiaomi_role:
-          "Led content rewriting, presentation design, and cross-language collaboration as the psychology/communication specialist.",
-        proj_xiaomi_methods:
-          "5 cross-regional meetings; co-defined pain points; rebuilt logic with visual templates; organized feedback loops.",
-        proj_xiaomi_results:
-          "15+ revised decks; ~20% approval increase; unified PPT & narrative template.",
         proj_tt_bg:
           "Douyin sought to understand individual engagement patterns to inform feature optimization.",
         proj_tt_goal:
@@ -1411,21 +1413,12 @@
 
         // projects
         proj_title: "Portfolio / Projekte",
+        proj_cta: "Projektübersicht",
         bg: "Hintergrund",
         goal: "Ziel",
         role: "Rolle",
         methods: "Methoden",
         results: "Ergebnis / Impact",
-        proj_xiaomi_bg:
-          "Die International Division musste komplexe technische Lösungen für Kunden in Europa und dem Nahen Osten klar darstellen.",
-        proj_xiaomi_goal:
-          "B2B-Presales-Kommunikation optimieren; Klarheit/Konsistenz der Präsentationen steigern.",
-        proj_xiaomi_role:
-          "Leitung von Content-Neustrukturierung, Präsentationsdesign und mehrsprachiger Zusammenarbeit.",
-        proj_xiaomi_methods:
-          "5 länderübergreifende Meetings; Pain Points definiert; Logik mit Visual-Templates neu aufgebaut; Feedback-Schleifen organisiert.",
-        proj_xiaomi_results:
-          "15+ überarbeitete Decks; ~20% höhere Genehmigungsrate; einheitliches PPT- & Narrative-Template.",
         proj_tt_bg:
           "Douyin wollte individuelle Nutzungsprofile verstehen, um Features zu optimieren.",
         proj_tt_goal:
@@ -1657,7 +1650,7 @@
       // html lang attr
       document.documentElement.setAttribute('lang', lang);
 
-      // swap CV links + button text
+      // swap CV links + button text + Employers download text
       const cvHref = (lang === 'de')
         ? 'assets/CV_MuziChen_DE.pdf'
         : 'assets/CV_MuziChen_EN.pdf';
@@ -1691,7 +1684,6 @@
         entries.forEach(entry=>{
           if(entry.isIntersecting){
             entry.target.classList.add('reveal-visible');
-            // once visible, we can unobserve so it won't flicker
             obs.unobserve(entry.target);
           }
         });
@@ -1701,7 +1693,6 @@
       revealEls.forEach(el=>obs.observe(el));
     }
 
-    /* init after DOM ready */
     document.addEventListener('DOMContentLoaded', ()=>{
       // language bootstrap
       const qsLang = new URLSearchParams(location.search).get('lang');
