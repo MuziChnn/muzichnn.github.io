@@ -393,6 +393,85 @@
     .reveal-visible{
       opacity:1;transform:translateY(0);
     }
+    /* ----- Tighten spacing: nav / about / sections ----- */
+/* Header/nav */
+.topbar{
+  padding:10px 18px; /* reduced from 14/20 */
+}
+.brand{ font-size:1rem; } /* slightly smaller name in nav */
+.nav-toggle{ padding:6px 8px; }
+
+/* Nav links - more compact */
+nav ul{ gap:12px; }
+nav li a{
+  padding:5px 8px; /* reduce horizontal padding */
+  font-size:.92rem;
+}
+
+/* Controls (right side) compact */
+.controls { gap:8px; }
+.lang-switch button{ padding:6px 10px; font-size:.9rem; }
+.btn{ padding:6px 10px; font-size:.92rem; }
+
+/* Main wrapper: reduce top padding so header -> content 更贴近 */
+.wrap {
+  padding:18px 16px; /* reduced from 28/20 */
+}
+
+/* Global section spacing: reduce top margin between sections */
+section { margin-top:24px; scroll-margin-top:78px; } /* tighter than 40/90 */
+
+/* Section header spacing */
+.section__head { margin-bottom:10px; }
+.rule { height:1px; }
+
+/* HERO / ABOUT card: reduce vertical padding & spacing */
+.hero { padding:26px 0; }
+.hero__paper{
+  padding:18px 18px;
+  grid-template-columns:140px 1fr;
+  gap:18px;
+}
+@media(max-width:860px){
+  .hero__paper{ grid-template-columns:1fr; padding:16px; }
+}
+
+/* Avatar and chips spacing reduction */
+.avatar{ width:120px; height:120px; }
+.chips{ margin:0.6rem 0 0.9rem; gap:.5rem .6rem; }
+.chip{ padding:.32rem .85rem; font-size: .98rem; }
+
+/* Reduce heading sizes slightly for more compact look */
+h1 { font-size:1.9rem; }
+h2.section__title { font-size:1.35rem; }
+h3 { font-size:1.05rem; }
+
+/* Card spacing (projects / cards) */
+.card{ padding:18px; margin-bottom:14px; }
+.proj-grid{ gap:14px; }
+
+/* Experience bullets: tighten */
+.exp-card{ padding:0.9rem 1rem; margin-bottom:0.9rem; }
+.bul li{ margin:.35rem 0; font-size:.98rem; }
+
+/* Skills grid spacing */
+.grid{ gap:14px; }
+
+/* Languages tile width */
+.lang-card{ padding:14px; }
+
+/* Small-screen adjustments: keep comfortable but compact */
+@media(max-width:500px){
+  .topbar{ padding:8px 12px; }
+  .wrap{ padding:14px 12px; }
+  h1{ font-size:1.6rem; }
+  .chip{ font-size:.95rem; padding:.28rem .6rem; }
+  .avatar{ width:96px;height:96px; }
+}
+
+/* Optional micro-tweak: slightly darker text for improved legibility */
+body { color: #0c141f; }
+.muted { color: #50606b; }
   </style>
 </head>
 <body>
