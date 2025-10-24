@@ -5,94 +5,526 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Muzi Chen — Professional Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{--bg:#fbfaf8;--text:#1c1c1c;--primary:#0d2c54;--accent:#bfa45f;--muted:#5c6975;--paper:#ffffff;--shadow:0 8px 30px rgba(13,44,84,.08);--radius:16px;--maxw:1100px}
-    /* Global font */
-    *{box-sizing:border-box;font-family:"Cormorant Garamond",serif}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-    :where(button,a,input,select,textarea){font:inherit}
-    .wrap{max-width:var(--maxw);margin-inline:auto;padding:28px 20px}
-    h1,h2,h3{color:var(--primary)}
+    :root {
+      --bg: #fbfaf8;
+      --text: #0f1621;        /* 深一点，增强可读性 */
+      --primary: #0d2c54;
+      --accent: #bfa45f;
+      --muted: #44515f;       /* 深一点，增强对比 */
+      --paper: #ffffff;
+      --shadow: 0 8px 30px rgba(13, 44, 84, 0.08);
+      --radius: 16px;
+      --maxw: 1100px;
+    }
 
-    /* ===== NAV (no-overlap, 3-column grid) ===== */
-    header.site{position:sticky;top:0;z-index:1000;background:rgba(251,250,248,.98);backdrop-filter:blur(6px);border-bottom:1px solid rgba(13,44,84,.08)}
-    .topbar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;padding:14px 20px}
-    .brand{display:flex;align-items:center;gap:10px;color:var(--primary);font-weight:700;white-space:nowrap}
-    .brand b{white-space:nowrap}
-    nav{display:block}
-    nav ul{display:flex;justify-content:center;align-items:center;list-style:none;margin:0;padding:0;gap:16px;flex-wrap:nowrap}
-    nav li a{text-decoration:none;color:var(--muted);font-weight:600;font-size:1rem;white-space:nowrap;transition:color .2s}
-    nav li a:hover,nav li a.active{color:var(--primary);background:#fff;border:1px solid rgba(13,44,84,.12);border-radius:12px;padding:6px 12px}
-    .controls{display:flex;gap:12px;align-items:center;justify-self:end;flex-wrap:nowrap;min-width:max-content}
-    .lang-switch{display:flex;border:1.5px solid var(--primary);border-radius:999px;overflow:hidden;flex-shrink:0}
-    .lang-switch button{background:#fff;border:0;padding:8px 14px;font-weight:700;color:var(--primary);cursor:pointer}
-    .lang-switch button.active{background:var(--primary);color:#fff}
-    .btn{border:1px solid rgba(13,44,84,.25);padding:8px 14px;border-radius:12px;background:#fff;box-shadow:var(--shadow);font-weight:700;white-space:nowrap;flex-shrink:0}
-    .btn:hover{border-color:var(--primary)}
-    @media (max-width:1180px){nav ul{gap:12px} nav li a{font-size:.95rem} .controls{gap:8px}}
-    @media (max-width:860px){nav ul{display:none}}
+    /* Global font + smoothing */
+    * {
+      box-sizing: border-box;
+      font-family: "Cormorant Garamond", serif;
+    }
+    :where(button,a,input,select,textarea){
+      font: inherit;
+    }
 
-    /* ===== Hero ===== */
-    .hero{padding:52px 0}
-    .hero__paper{background:var(--paper);border:1px solid rgba(13,44,84,.08);border-radius:var(--radius);box-shadow:var(--shadow);padding:36px;display:grid;grid-template-columns:170px 1fr;gap:28px;align-items:center}
-    .avatar{width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);background:#fff}
-    h1{font-size:2.4rem;margin:.1rem 0 .35rem;font-weight:700}
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-    /* Chips (blue–white alternating) */
-    .chips{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.2rem 0}
-    .chip{border:1.5px solid var(--primary);border-radius:999px;padding:.4rem 1.2rem;font-weight:700;font-size:1.05rem;transition:.25s ease}
-    .chip:nth-child(odd){background:#fff;color:var(--primary)}
-    .chip:nth-child(even){background:var(--primary);color:#fff}
-    .chip:hover{box-shadow:0 0 6px rgba(191,164,95,.45);transform:translateY(-1px)}
+    .wrap {
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding: 28px 20px;
+    }
 
-    /* Sections */
-    section{scroll-margin-top:90px;margin-top:42px}
-    .section__head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-    .section__title{font-size:1.8rem}
-    .rule{height:1px;background:linear-gradient(90deg,var(--accent),transparent);flex:1}
-    .card{background:var(--paper);border:1px solid rgba(13,44,84,.08);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:18px}
+    h1,
+    h2,
+    h3 {
+      color: var(--primary);
+      margin-top: 0;
+    }
 
-    /* Projects (text-only, no tags) */
-    .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .proj{border-left:4px solid var(--primary)}
-    .proj h3{margin:.1rem 0 .35rem}
-    .kpi{font-weight:700;color:var(--accent)}
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin: .1rem 0 .35rem;
+      line-height: 1.2;
+    }
 
-    /* Experience */
-    .exp-card{background:var(--paper);border-left:4px solid var(--accent);border-radius:12px;box-shadow:var(--shadow);margin-bottom:1.2rem;padding:1.25rem 1.25rem 1rem 1.6rem}
-    .exp-header{font-weight:700;color:var(--primary);font-size:1.25rem}
-    .exp-meta{color:var(--muted);font-size:1.05rem;margin:.2rem 0 .8rem}
-    .bul{list-style:none;padding-left:1.2rem;margin:.3rem 0}
-    .bul li{margin:.42rem 0;position:relative}
-    .bul li::before{content:"▸";position:absolute;left:-1.2rem;color:var(--accent);font-weight:700}
-    .exp-tags{border-top:1px dashed rgba(13,44,84,.15);margin-top:.6rem;padding-top:.45rem}
-    .exp-tags .badge{display:inline-block;background:rgba(191,164,95,.12);color:var(--primary);border:1px solid rgba(191,164,95,.45);border-radius:999px;padding:.25rem .75rem;margin:.25rem .3rem;font-size:.95rem;font-weight:700}
+    /* Bold inline leaders in bullets */
+    b,
+    strong {
+      font-weight: 700;
+      color: var(--primary);
+    }
+    p,
+    li {
+      font-size: 1.06rem;
+    }
+    .card p {
+      margin: .4rem 0;
+    }
+    .bul b {
+      font-weight: 700;
+      color: var(--primary);
+    }
 
-    /* Grid */
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    @media (max-width:860px){.hero__paper{grid-template-columns:1fr}.proj-grid,.grid{grid-template-columns:1fr}}
-    /* ===== Mobile nav (hamburger) ===== */
-    .nav-toggle{display:none; border:1px solid var(--primary); background:#fff; border-radius:10px; padding:8px 10px; cursor:pointer; align-items:center; gap:8px; font-weight:700}
-    .nav-toggle .bars{width:18px; height:2px; background:var(--primary); position:relative; display:block}
-    .nav-toggle .bars::before,.nav-toggle .bars::after{content:""; position:absolute; left:0; width:18px; height:2px; background:var(--primary)}
-    .nav-toggle .bars::before{top:-6px} .nav-toggle .bars::after{top:6px}
+    /* ======================================================
+       NAV BAR (desktop = 3-column grid, mobile = hamburger)
+       ====================================================== */
+    header.site {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251,250,248,.98);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(13,44,84,.08);
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: auto 1fr auto;  /* brand | menu | controls */
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      max-width: var(--maxw);
+      margin-inline: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+      font-weight: 700;
+      white-space: nowrap;
+      font-size: 1.2rem;
+    }
+    .brand b {
+      white-space: nowrap;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(191,164,95,.25);
+      flex-shrink: 0;
+    }
+
+    nav {
+      display: block;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 16px;
+      flex-wrap: nowrap;
+    }
+    nav li a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 1rem;
+      white-space: nowrap;
+      transition: color .2s;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      padding: 6px 0;
+    }
+    nav li a:hover,
+    nav li a.active {
+      color: var(--primary);
+      background: #fff;
+      border: 1px solid rgba(13,44,84,.12);
+      padding: 6px 12px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-self: end;
+      flex-wrap: nowrap;
+      min-width: max-content;
+    }
+
+    /* language pill */
+    .lang-switch {
+      display: flex;
+      border: 1.5px solid var(--primary);
+      border-radius: 999px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .lang-switch button {
+      background: #fff;
+      border: 0;
+      padding: 8px 14px;
+      font-weight: 700;
+      color: var(--primary);
+      cursor: pointer;
+    }
+    .lang-switch button.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* CV button */
+    .btn {
+      border: 1px solid rgba(13,44,84,.25);
+      padding: 8px 14px;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-decoration: none;
+      color: var(--primary);
+    }
+    .btn:hover {
+      border-color: var(--primary);
+    }
+
+    /* Hamburger "Menu" button (mobile only <860px) */
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--primary);
+      background: #fff;
+      border-radius: 10px;
+      padding: 8px 10px;
+      cursor: pointer;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .nav-toggle .bars {
+      width: 18px;
+      height: 2px;
+      background: var(--primary);
+      position: relative;
+      display: block;
+    }
+    .nav-toggle .bars::before,
+    .nav-toggle .bars::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: var(--primary);
+    }
+    .nav-toggle .bars::before { top: -6px; }
+    .nav-toggle .bars::after  { top:  6px; }
+
+    /* Desktop tweaks for slightly narrower screens */
+    @media (max-width:1180px){
+      nav ul { gap: 12px; }
+      nav li a { font-size: .95rem; }
+      .controls { gap: 8px; }
+    }
+
+    /* Tablet & below:
+       - hide horizontal nav
+       - show hamburger
+       - dropdown is full-width under header
+    */
+    @media (max-width:860px){
+      .nav-toggle { display: inline-flex; }
+      header.site nav ul {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: calc(var(--navH,64px));
+        background: rgba(251,250,248,.98);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid rgba(13,44,84,.08);
+        box-shadow: 0 10px 20px rgba(13,44,84,.08);
+        padding: 14px 20px;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 999;
+      }
+      header.site.open nav ul {
+        display: flex;
+      }
+      nav li a {
+        padding: 8px 10px;
+        border-radius: 10px;
+        border: 1px solid rgba(13,44,84,.12);
+        width: 100%;
+        background: #fff;
+        text-align: center;
+        font-size: 1.05rem;
+      }
+      nav li a.active,
+      nav li a:hover {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+      .controls {
+        gap: 8px;
+      }
+    }
+
+    /* ======================================================
+       HERO / ABOUT
+       ====================================================== */
+    .hero {
+      padding: 52px 0;
+    }
+
+    .hero__paper {
+      background: var(--paper);
+      border: 1px solid rgba(13,44,84,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
 
     @media (max-width:860px){
-      .nav-toggle{display:inline-flex}
-      /* reuse the same nav list as a dropdown */
-      header.site nav ul{display:none; position:fixed; left:0; right:0; top:calc(var(--navH,64px)); background:rgba(251,250,248,.98); backdrop-filter:blur(6px); border-bottom:1px solid rgba(13,44,84,.08); box-shadow:0 10px 20px rgba(13,44,84,.08); padding:14px 20px; flex-direction:column; gap:10px; z-index:999}
-      header.site.open nav ul{display:flex}
-      nav li a{padding:8px 10px; border-radius:10px}
-      .controls{gap:8px}
+      .hero__paper {
+        grid-template-columns: 1fr;
+      }
     }
-</style>
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      background: #fff;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      margin: 1.2rem 0;
+    }
+    .chip {
+      border: 1.5px solid var(--primary);
+      border-radius: 999px;
+      padding: .45rem 1.2rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: .25s ease;
+      line-height: 1.2;
+    }
+    .chip:nth-child(odd) {
+      background: #fff;
+      color: var(--primary);
+    }
+    .chip:nth-child(even) {
+      background: var(--primary);
+      color: #fff;
+    }
+    .chip:hover {
+      box-shadow: 0 0 6px rgba(191,164,95,.45);
+      transform: translateY(-1px);
+    }
+
+    .sep {
+      margin: 0 .5rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* ======================================================
+       SHARED SECTION STYLES
+       ====================================================== */
+    section {
+      scroll-margin-top: 90px;
+      margin-top: 42px;
+    }
+
+    .section__head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .section__title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    .rule {
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      flex: 1;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid rgba(13,44,84,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 18px;
+    }
+
+    /* ======================================================
+       PROJECTS (text only, no tags)
+       ====================================================== */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width:860px){
+      .proj-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .proj {
+      border-left: 4px solid var(--primary);
+    }
+    .proj h3 {
+      margin: .1rem 0 .35rem;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+
+    /* highlight metrics like 15+ / ~20% / 10k+ */
+    .kpi {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ======================================================
+       EXPERIENCE
+       ====================================================== */
+    .exp-card {
+      background: var(--paper);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.2rem;
+      padding: 1.25rem 1.25rem 1rem 1.6rem;
+    }
+
+    .exp-header {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .exp-meta {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: .2rem 0 .8rem;
+    }
+
+    .bul {
+      list-style: none;
+      padding-left: 1.2rem;
+      margin: .3rem 0;
+    }
+    .bul li {
+      margin: .42rem 0;
+      position: relative;
+    }
+    .bul li::before {
+      content: "▸";
+      position: absolute;
+      left: -1.2rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .exp-tags {
+      border-top: 1px dashed rgba(13,44,84,.15);
+      margin-top: .6rem;
+      padding-top: .45rem;
+    }
+    .exp-tags .badge {
+      display: inline-block;
+      background: rgba(191,164,95,.12);
+      color: var(--primary);
+      border: 1px solid rgba(191,164,95,.45);
+      border-radius: 999px;
+      padding: .25rem .75rem;
+      margin: .25rem .3rem;
+      font-size: .95rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* ======================================================
+       GRID BLOCKS (Skills cards)
+       ====================================================== */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width:860px){
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+
+    /* footer */
+    footer {
+      color: var(--muted);
+      font-size: 1rem;
+      padding-bottom: 60px;
+    }
+  </style>
 </head>
+
 <body>
-  <!-- ===== NAV ===== -->
+  <!-- ================= NAV ================= -->
   <header class="site">
-    <div class="topbar wrap">
-      <div class="brand"><span class="dot" style="width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(191,164,95,.25)"></span><b>Muzi Chen</b></div>
-      <nav aria-label="Primary"><ul id="primary-menu">
+    <div class="topbar">
+      <!-- Brand -->
+      <div class="brand">
+        <span class="dot"></span>
+        <b>Muzi Chen</b>
+      </div>
+
+      <!-- Nav list -->
+      <nav aria-label="Primary">
+        <ul id="primary-menu">
           <li><a href="#about" data-i18n="nav_about" class="active">About</a></li>
           <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
           <li><a href="#experience" data-i18n="nav_experience">Experience</a></li>
@@ -102,35 +534,66 @@
           <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
       </nav>
+
+      <!-- Controls: hamburger (mobile), lang toggle, CV -->
       <div class="controls">
-        <button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="bars"></span> Menu</button>
+        <!-- Hamburger -->
+        <button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false">
+          <span class="bars"></span>
+          <span id="menu-label">Menu</span>
+        </button>
+
+        <!-- Language toggle -->
         <div class="lang-switch" role="tablist" aria-label="Language switcher">
           <button id="btn-en" class="active" role="tab" aria-selected="true">EN</button>
           <button id="btn-de" role="tab" aria-selected="false">DE</button>
         </div>
+
+        <!-- CV -->
         <a id="cvTop" class="btn" href="assets/CV_MuziChen_EN.pdf">↓ CV (PDF)</a>
       </div>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- 1) ABOUT -->
+    <!-- ============ 1) ABOUT / HOME ============ -->
     <section class="hero" id="about">
       <div class="hero__paper">
         <img class="avatar" src="assets/profile.jpg" alt="Muzi Chen portrait">
         <div>
           <h1 data-i18n="about_h1">Muzi Chen</h1>
-          <p data-i18n="about_p1">M.A. student at Peking University, dedicated to translating complex research into business-ready insights. Visa-ready and relocation-ready for employment in Germany / EU.</p>
+
+          <p data-i18n="about_p1">
+            M.A. student at Peking University, dedicated to translating complex research
+            into business-ready insights. Visa-ready and relocation-ready for employment
+            in Germany / EU.
+          </p>
+
+          <!-- highlight chips -->
           <div class="chips">
             <span class="chip" data-i18n="about_chip1">UX Research</span>
             <span class="chip" data-i18n="about_chip2">Human–AI Interaction</span>
             <span class="chip" data-i18n="about_chip3">User-Centered Evaluation</span>
           </div>
+
           <ul class="bul">
-            <li data-i18n="about_l1"><b>Industry × Research Collaboration:</b> MSRA · Xiaomi · Kuaishou — user research, cross-team communication, reporting, business alignment.</li>
-            <li data-i18n="about_l2"><b>Methods × Tools:</b> Experimental design, usability testing, interviews & surveys; SPSS, Python, Microsoft 365; decision-oriented insights.</li>
-            <li data-i18n="about_l3"><b>Languages & Culture:</b> English (IELTS 7.5), German A2, Spanish A2, Chinese (native); cross-cultural collaboration.</li>
+            <li data-i18n="about_l1">
+              <b>Industry × Research Collaboration:</b>
+              MSRA · Xiaomi · Kuaishou — user research,
+              cross-team communication, reporting, business alignment.
+            </li>
+            <li data-i18n="about_l2">
+              <b>Methods × Tools:</b>
+              Experimental design, usability testing, interviews &amp; surveys;
+              SPSS, Python, Microsoft 365; decision-oriented insights.
+            </li>
+            <li data-i18n="about_l3">
+              <b>Languages &amp; Culture:</b>
+              English (IELTS 7.5), German A2, Spanish A2, Chinese (native);
+              cross-cultural collaboration.
+            </li>
           </ul>
+
           <p>
             <a id="cvAbout" class="btn" href="assets/CV_MuziChen_EN.pdf" data-i18n="cta_cv">📄 Download CV (PDF)</a>
             <span class="sep">•</span>
@@ -142,69 +605,231 @@
       </div>
     </section>
 
-    <!-- 2) PROJECTS (text only) -->
+    <!-- ============ 2) PROJECTS ============ -->
     <section id="projects">
-      <div class="section__head"><h2 class="section__title" data-i18n="proj_title">Portfolio / Projects</h2><div class="rule"></div></div>
+      <div class="section__head">
+        <h2 class="section__title" data-i18n="proj_title">Portfolio / Projects</h2>
+        <div class="rule"></div>
+      </div>
+
       <div class="proj-grid">
+        <!-- Xiaomi -->
         <article class="card proj">
           <h3>◆ Xiaomi International | Pre-Sales Tech</h3>
-          <p><b data-i18n="bg">Background</b> — <span data-i18n="proj_xiaomi_bg">The International Division needed to present complex technical solutions clearly to clients across Europe and the Middle East.</span></p>
-          <p><b data-i18n="goal">Goal</b> — <span data-i18n="proj_xiaomi_goal">Optimize B2B pre-sales communication and improve clarity/consistency in solution presentations.</span></p>
-          <p><b data-i18n="role">Role</b> — <span data-i18n="proj_xiaomi_role">Led content rewriting, presentation design, and cross-language collaboration as the psychology/communication specialist.</span></p>
-          <p><b data-i18n="methods">Methods</b> — <span data-i18n="proj_xiaomi_methods" data-metric>5 cross-regional meetings; co-defined pain points; rebuilt logic with visual templates; organized feedback loops.</span></p>
-          <p><b data-i18n="results">Results</b> — <span data-i18n="proj_xiaomi_results" data-metric>15+ revised decks; ~20% approval increase; unified PPT & narrative template.</span></p>
+          <p>
+            <b data-i18n="bg">Background</b> —
+            <span data-i18n="proj_xiaomi_bg">
+              The International Division needed to present complex technical solutions
+              clearly to clients across Europe and the Middle East.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="goal">Goal</b> —
+            <span data-i18n="proj_xiaomi_goal">
+              Optimize B2B pre-sales communication and improve clarity/consistency in
+              solution presentations.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="role">Role</b> —
+            <span data-i18n="proj_xiaomi_role">
+              Led content rewriting, presentation design, and cross-language collaboration
+              as the psychology/communication specialist.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="methods">Methods</b> —
+            <span data-i18n="proj_xiaomi_methods" data-metric>
+              5 cross-regional meetings; co-defined pain points; rebuilt logic with
+              visual templates; organized feedback loops.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="results">Results</b> —
+            <span data-i18n="proj_xiaomi_results" data-metric>
+              15+ revised decks; ~20% approval increase; unified PPT &amp; narrative template.
+            </span>
+          </p>
         </article>
 
+        <!-- TikTok -->
         <article class="card proj">
           <h3>◆ TikTok | User Research</h3>
-          <p><b data-i18n="bg">Background</b> — <span data-i18n="proj_tt_bg">Douyin sought to understand individual engagement patterns to inform feature optimization.</span></p>
-          <p><b data-i18n="goal">Goal</b> — <span data-i18n="proj_tt_goal">Analyze motivation & control failure mechanisms using behavioral data.</span></p>
-          <p><b data-i18n="role">Role</b> — <span data-i18n="proj_tt_role">Designed surveys; cleaned data; visualized and profiled users.</span></p>
-          <p><b data-i18n="methods">Methods</b> — <span data-i18n="proj_tt_methods" data-metric>433 valid responses; EFA & SEM (SPSS); cross-team interpretation.</span></p>
-          <p><b data-i18n="results">Results</b> — <span data-i18n="proj_tt_results">Report adopted for training; model inspired a paper under review.</span></p>
+          <p>
+            <b data-i18n="bg">Background</b> —
+            <span data-i18n="proj_tt_bg">
+              Douyin sought to understand individual engagement patterns to inform
+              feature optimization.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="goal">Goal</b> —
+            <span data-i18n="proj_tt_goal">
+              Analyze motivation &amp; control failure mechanisms using behavioral data.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="role">Role</b> —
+            <span data-i18n="proj_tt_role">
+              Designed surveys; cleaned data; visualized and profiled users.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="methods">Methods</b> —
+            <span data-i18n="proj_tt_methods" data-metric>
+              433 valid responses; EFA &amp; SEM (SPSS); cross-team interpretation.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="results">Results</b> —
+            <span data-i18n="proj_tt_results">
+              Report adopted for training; model inspired a paper under review.
+            </span>
+          </p>
         </article>
 
+        <!-- MSRA -->
         <article class="card proj">
           <h3>◆ Microsoft Research Asia | Academic Collaboration</h3>
-          <p><b data-i18n="bg">Background</b> — <span data-i18n="proj_msra_bg">Interdisciplinary teams needed efficient coordination between academia and engineering.</span></p>
-          <p><b data-i18n="goal">Goal</b> — <span data-i18n="proj_msra_goal">Standardize documentation and meeting protocols for traceability.</span></p>
-          <p><b data-i18n="role">Role</b> — <span data-i18n="proj_msra_role">Built doc framework; authored structured minutes; aligned RA/engineers.</span></p>
-          <p><b data-i18n="methods">Methods</b> — <span data-i18n="proj_msra_methods" data-metric>Unified templates; summarized 4 sub‑projects; tracked weekly actions.</span></p>
-          <p><b data-i18n="results">Results</b> — <span data-i18n="proj_msra_results">Improved efficiency; reusable docs for exchanges; operational model.</span></p>
+          <p>
+            <b data-i18n="bg">Background</b> —
+            <span data-i18n="proj_msra_bg">
+              Interdisciplinary teams needed efficient coordination between academia
+              and engineering.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="goal">Goal</b> —
+            <span data-i18n="proj_msra_goal">
+              Standardize documentation and meeting protocols for traceability.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="role">Role</b> —
+            <span data-i18n="proj_msra_role">
+              Built doc framework; authored structured minutes; aligned RA/engineers.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="methods">Methods</b> —
+            <span data-i18n="proj_msra_methods" data-metric>
+              Unified templates; summarized 4 sub-projects; tracked weekly actions.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="results">Results</b> —
+            <span data-i18n="proj_msra_results">
+              Improved efficiency; reusable docs for exchanges; operational model.
+            </span>
+          </p>
         </article>
 
+        <!-- Tsinghua -->
         <article class="card proj">
-          <h3>◆ Tsinghua University | Cognitive & AI Lab (RA)</h3>
-          <p><b data-i18n="bg">Background</b> — <span data-i18n="proj_thu_bg" data-metric>Large-scale study on spatial navigation & AI simulation (6,000+ participants).</span></p>
-          <p><b data-i18n="goal">Goal</b> — <span data-i18n="proj_thu_goal">Identify factors of navigation difficulty; build human–AI comparability.</span></p>
-          <p><b data-i18n="role">Role</b> — <span data-i18n="proj_thu_role">Designed tasks; collected data; extracted spatial features; modeled difficulty.</span></p>
-          <p><b data-i18n="methods">Methods</b> — <span data-i18n="proj_thu_methods" data-metric>Quantified 10k+ maps (Python: path length, turns, dead‑ends, branching); modeled RT/error/deviation; stats on feature–difficulty.</span></p>
-          <p><b data-i18n="results">Results</b> — <span data-i18n="proj_thu_results" data-metric>80+ predictors identified; standardized extraction scripts; used for AI–Human comparison papers.</span></p>
+          <h3>◆ Tsinghua University | Cognitive &amp; AI Lab (RA)</h3>
+          <p>
+            <b data-i18n="bg">Background</b> —
+            <span data-i18n="proj_thu_bg" data-metric>
+              Large-scale study on spatial navigation &amp; AI simulation
+              (6,000+ participants).
+            </span>
+          </p>
+          <p>
+            <b data-i18n="goal">Goal</b> —
+            <span data-i18n="proj_thu_goal">
+              Identify factors of navigation difficulty; build human–AI comparability.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="role">Role</b> —
+            <span data-i18n="proj_thu_role">
+              Designed tasks; collected data; extracted spatial features; modeled
+              difficulty.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="methods">Methods</b> —
+            <span data-i18n="proj_thu_methods" data-metric>
+              Quantified 10k+ maps (Python: path length, turns, dead-ends,
+              branching); modeled RT/error/deviation; stats on
+              feature–difficulty.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="results">Results</b> —
+            <span data-i18n="proj_thu_results" data-metric>
+              80+ predictors identified; standardized extraction scripts; used
+              for AI–Human comparison papers.
+            </span>
+          </p>
         </article>
 
+        <!-- Poly -->
         <article class="card proj">
           <h3>◆ Poly Real Estate | User Persona Project</h3>
-          <p><b data-i18n="bg">Background</b> — <span data-i18n="proj_poly_bg">Client needed data-driven optimization of buyer personas & decisions.</span></p>
-          <p><b data-i18n="goal">Goal</b> — <span data-i18n="proj_poly_goal">Psychographic segmentation to guide strategy.</span></p>
-          <p><b data-i18n="role">Role</b> — <span data-i18n="proj_poly_role">Data preprocessing, persona visualization, reporting; supported client pitch.</span></p>
-          <p><b data-i18n="methods">Methods</b> — <span data-i18n="proj_poly_methods">Integrated CRM & surveys; combined behavior + psychology; dashboards.</span></p>
-          <p><b data-i18n="results">Results</b> — <span data-i18n="proj_poly_results">3 key personas in annual report; standardized viz templates.</span></p>
+          <p>
+            <b data-i18n="bg">Background</b> —
+            <span data-i18n="proj_poly_bg">
+              Client needed data-driven optimization of buyer personas &amp; decisions.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="goal">Goal</b> —
+            <span data-i18n="proj_poly_goal">
+              Psychographic segmentation to guide strategy.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="role">Role</b> —
+            <span data-i18n="proj_poly_role">
+              Data preprocessing, persona visualization, reporting; supported
+              client pitch.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="methods">Methods</b> —
+            <span data-i18n="proj_poly_methods">
+              Integrated CRM &amp; surveys; combined behavior + psychology;
+              dashboards.
+            </span>
+          </p>
+          <p>
+            <b data-i18n="results">Results</b> —
+            <span data-i18n="proj_poly_results">
+              3 key personas in annual report; standardized viz templates.
+            </span>
+          </p>
         </article>
       </div>
     </section>
 
-    <!-- 3) EXPERIENCE -->
+    <!-- ============ 3) EXPERIENCE ============ -->
     <section id="experience">
-      <div class="section__head"><h2 class="section__title" data-i18n="exp_title">Experience</h2><div class="rule"></div></div>
+      <div class="section__head">
+        <h2 class="section__title" data-i18n="exp_title">Experience</h2>
+        <div class="rule"></div>
+      </div>
+
+      <!-- Industry -->
       <div class="card">
         <h3>Industry Experience</h3>
+
         <div class="exp-card">
-          <div class="exp-header">Xiaomi — <i data-i18n="exp_xiaomi_title">International Pre-Sales Engineer</i></div>
+          <div class="exp-header">
+            Xiaomi — <i data-i18n="exp_xiaomi_title">International Pre-Sales Engineer</i>
+          </div>
           <div class="exp-meta">Apr–Oct 2025 · Beijing</div>
           <ul class="bul">
-            <li data-i18n="exp_xiaomi_b1">Translated technical solutions into client-ready decks, improving clarity & approvals.</li>
-            <li data-i18n="exp_xiaomi_b2">Coordinated engineering, sales, and overseas teams.</li>
-            <li data-i18n="exp_xiaomi_b3">Designed reusable presentation & scripting templates.</li>
+            <li data-i18n="exp_xiaomi_b1">
+              Translated technical solutions into client-ready decks, improving
+              clarity &amp; approvals.
+            </li>
+            <li data-i18n="exp_xiaomi_b2">
+              Coordinated engineering, sales, and overseas teams.
+            </li>
+            <li data-i18n="exp_xiaomi_b3">
+              Designed reusable presentation &amp; scripting templates.
+            </li>
           </ul>
           <div class="exp-tags">
             <span class="badge">cross-functional</span>
@@ -215,12 +840,20 @@
         </div>
 
         <div class="exp-card">
-          <div class="exp-header">Microsoft — <i data-i18n="exp_ms_title">Academic Collaboration</i></div>
+          <div class="exp-header">
+            Microsoft — <i data-i18n="exp_ms_title">Academic Collaboration</i>
+          </div>
           <div class="exp-meta">Aug–Dec 2024 · Beijing</div>
           <ul class="bul">
-            <li data-i18n="exp_ms_b1">Supported interdisciplinary AI projects via data summaries & doc management.</li>
-            <li data-i18n="exp_ms_b2">Standardized progress reports & presentation templates.</li>
-            <li data-i18n="exp_ms_b3">Kept academia–engineering alignment with meeting documentation.</li>
+            <li data-i18n="exp_ms_b1">
+              Supported interdisciplinary AI projects via data summaries &amp; doc management.
+            </li>
+            <li data-i18n="exp_ms_b2">
+              Standardized progress reports &amp; presentation templates.
+            </li>
+            <li data-i18n="exp_ms_b3">
+              Kept academia–engineering alignment with meeting documentation.
+            </li>
           </ul>
           <div class="exp-tags">
             <span class="badge">alignment</span>
@@ -230,57 +863,89 @@
         </div>
 
         <div class="exp-card">
-          <div class="exp-header">Kuaishou — <i data-i18n="exp_ks_title">User Research</i></div>
+          <div class="exp-header">
+            Kuaishou — <i data-i18n="exp_ks_title">User Research</i>
+          </div>
           <div class="exp-meta">Apr–Aug 2024 · Beijing</div>
           <ul class="bul">
-            <li data-i18n="exp_ks_b1">Audience segmentation with behavior/demographics.</li>
-            <li data-i18n="exp_ks_b2">Clustering (K‑means, hierarchical) & RFM; stability validation.</li>
-            <li data-i18n="exp_ks_b3">Collaborated on targeting & push strategies; designed A/B KPIs.</li>
+            <li data-i18n="exp_ks_b1">
+              Audience segmentation with behavior/demographics.
+            </li>
+            <li data-i18n="exp_ks_b2">
+              Clustering (K-means, hierarchical) &amp; RFM; stability validation.
+            </li>
+            <li data-i18n="exp_ks_b3">
+              Collaborated on targeting &amp; push strategies; designed A/B KPIs.
+            </li>
           </ul>
           <div class="exp-tags">
             <span class="badge">personas</span>
             <span class="badge">targeting</span>
             <span class="badge">clustering</span>
-            <span class="badge">A/B testing</span>
+            <span class="badge">a/b testing</span>
           </div>
         </div>
       </div>
 
+      <!-- Research -->
       <div class="card">
         <h3>Research Experience</h3>
+
         <div class="exp-card">
-          <div class="exp-header">Tsinghua University — Cognitive & AI Lab (RA)</div>
+          <div class="exp-header">
+            Tsinghua University — Cognitive &amp; AI Lab (RA)
+          </div>
           <div class="exp-meta">May–Sep 2025</div>
           <ul class="bul">
-            <li data-i18n="exp_thu_b1">Designed spatial navigation experiments (6,000+ participants).</li>
-            <li data-i18n="exp_thu_b2">Extracted 80+ spatial features; predictive modeling.</li>
-            <li data-i18n="exp_thu_b3">AI–Human comparison pipeline; standardized scripts.</li>
+            <li data-i18n="exp_thu_b1">
+              Designed spatial navigation experiments (6,000+ participants).
+            </li>
+            <li data-i18n="exp_thu_b2">
+              Extracted 80+ spatial features; predictive modeling.
+            </li>
+            <li data-i18n="exp_thu_b3">
+              AI–Human comparison pipeline; standardized scripts.
+            </li>
           </ul>
           <div class="exp-tags">
             <span class="badge">experimental design</span>
             <span class="badge">data extraction</span>
-            <span class="badge">AI‑human comparison</span>
+            <span class="badge">ai-human comparison</span>
           </div>
         </div>
+
         <div class="exp-card">
-          <div class="exp-header">Short Video Motivation Project (Independent)</div>
+          <div class="exp-header">
+            Short Video Motivation Project (Independent)
+          </div>
           <div class="exp-meta">Apr–Nov 2024 · PKU</div>
           <ul class="bul">
-            <li data-i18n="exp_sv_b1">SDT & SCT frameworks; motivation–control–outcome SEM.</li>
-            <li data-i18n="exp_sv_b2">433 surveys; paper submitted to SSCI Q1 journal.</li>
+            <li data-i18n="exp_sv_b1">
+              SDT &amp; SCT frameworks; motivation–control–outcome SEM.
+            </li>
+            <li data-i18n="exp_sv_b2">
+              433 surveys; paper submitted to SSCI Q1 journal.
+            </li>
           </ul>
           <div class="exp-tags">
-            <span class="badge">self‑determination</span>
-            <span class="badge">SEM</span>
+            <span class="badge">self-determination</span>
+            <span class="badge">sem</span>
             <span class="badge">academic writing</span>
           </div>
         </div>
+
         <div class="exp-card">
-          <div class="exp-header">Poly Real Estate — Persona Consulting</div>
+          <div class="exp-header">
+            Poly Real Estate — Persona Consulting
+          </div>
           <div class="exp-meta">Oct–Dec 2023 · Beijing</div>
           <ul class="bul">
-            <li data-i18n="exp_poly_b1">Built 3 buyer personas using CRM & survey data.</li>
-            <li data-i18n="exp_poly_b2">Clustering in Excel/Python; visuals for executives.</li>
+            <li data-i18n="exp_poly_b1">
+              Built 3 buyer personas using CRM &amp; survey data.
+            </li>
+            <li data-i18n="exp_poly_b2">
+              Clustering in Excel/Python; visuals for executives.
+            </li>
           </ul>
           <div class="exp-tags">
             <span class="badge">personas</span>
@@ -291,15 +956,48 @@
       </div>
     </section>
 
-    <!-- 4) SKILLS & TOOLS -->
+    <!-- ============ 4) SKILLS ============ -->
     <section id="skills">
-      <div class="section__head"><h2 class="section__title" data-i18n="skills_title">Skills & Tools</h2><div class="rule"></div></div>
+      <div class="section__head">
+        <h2 class="section__title" data-i18n="skills_title">Skills &amp; Tools</h2>
+        <div class="rule"></div>
+      </div>
+
       <div class="grid">
-        <div class="card"><h3 data-i18n="skills_user">User Research & Evaluation</h3><p data-i18n="skills_user_p">Usability Testing · Interviews · Survey Design & Psychometrics · Personas · Journeys · A/B Testing · KPI Tracking</p></div>
-        <div class="card"><h3 data-i18n="skills_methods">Research Methods</h3><p data-i18n="skills_methods_p">Experimental Design · Survey Analysis · SEM · Qualitative Coding · Mixed Methods · AI–Human Comparative Research</p></div>
-        <div class="card"><h3 data-i18n="skills_data">Data & Tools</h3><p data-i18n="skills_data_p">SPSS · Python · Excel · Matplotlib · Plotly · Power BI · Microsoft 365 · Notion · Jira · Figma · Miro · Axure · Qualtrics · NVivo · GitHub · Overleaf</p></div>
-        <div class="card"><h3 data-i18n="skills_soft">Communication & Soft Skills</h3><p data-i18n="skills_soft_p">Structured Reporting · Cross‑functional Collaboration · Stakeholder Presentations · Multilingual Communication · Documentation</p></div>
-        <div class="card"><h3 data-i18n="skills_lang">Languages</h3>
+        <div class="card">
+          <h3 data-i18n="skills_user">User Research &amp; Evaluation</h3>
+          <p data-i18n="skills_user_p">
+            Usability Testing · Interviews · Survey Design &amp; Psychometrics ·
+            Personas · Journeys · A/B Testing · KPI Tracking
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="skills_methods">Research Methods</h3>
+          <p data-i18n="skills_methods_p">
+            Experimental Design · Survey Analysis · SEM · Qualitative Coding ·
+            Mixed Methods · AI–Human Comparative Research
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="skills_data">Data &amp; Tools</h3>
+          <p data-i18n="skills_data_p">
+            SPSS · Python · Excel · Matplotlib · Plotly · Power BI · Microsoft 365 ·
+            Notion · Jira · Figma · Miro · Axure · Qualtrics · NVivo · GitHub · Overleaf
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="skills_soft">Communication &amp; Soft Skills</h3>
+          <p data-i18n="skills_soft_p">
+            Structured Reporting · Cross-functional Collaboration · Stakeholder
+            Presentations · Multilingual Communication · Documentation
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="skills_lang">Languages</h3>
           <ul class="bul">
             <li data-i18n="lang_en"><b>English:</b> C1, IELTS 7.5</li>
             <li data-i18n="lang_de"><b>German:</b> A2 (in progress)</li>
@@ -310,100 +1008,688 @@
       </div>
     </section>
 
-    <!-- 5) EDUCATION -->
+    <!-- ============ 5) EDUCATION ============ -->
     <section id="education">
-      <div class="section__head"><h2 class="section__title" data-i18n="edu_title">Education & Honors</h2><div class="rule"></div></div>
-      <div class="card"><b>Peking University</b> — <i>M.A. in New Media (Media Psychology)</i> · 2023–2026 <br><span class="muted" data-i18n="edu_pku_tags">Data Mining · Public Opinion Analysis · Research Methods · Social Psychology · First‑Class Scholarship (2024) · Peer Mentor</span></div>
-      <div class="card"><b>Tampere University (Finland)</b> — <i>Exchange Program</i> · 2025 <br><span class="muted" data-i18n="edu_tre_tags">Social/Personality Psychology · Intercultural Communication · Experimental Design · English‑medium</span></div>
-      <div class="card"><b>Southwest Jiaotong University</b> — <i>B.Sc. in Applied Psychology</i> · 2019–2023 <br><span class="muted" data-i18n="edu_swjtu_tags">Statistics · Cognitive & Social Psychology · Psychometrics · SRTP Project · Thesis on sensation seeking & wellbeing</span></div>
+      <div class="section__head">
+        <h2 class="section__title" data-i18n="edu_title">Education &amp; Honors</h2>
+        <div class="rule"></div>
+      </div>
+
+      <div class="card">
+        <b>Peking University</b> —
+        <i>M.A. in New Media (Media Psychology)</i> · 2023–2026
+        <br>
+        <span class="muted" data-i18n="edu_pku_tags">
+          Data Mining · Public Opinion Analysis · Research Methods · Social Psychology ·
+          First-Class Scholarship (2024) · Peer Mentor
+        </span>
+      </div>
+
+      <div class="card">
+        <b>Tampere University (Finland)</b> —
+        <i>Exchange Program</i> · 2025
+        <br>
+        <span class="muted" data-i18n="edu_tre_tags">
+          Social/Personality Psychology · Intercultural Communication · Experimental Design ·
+          English-medium
+        </span>
+      </div>
+
+      <div class="card">
+        <b>Southwest Jiaotong University</b> —
+        <i>B.Sc. in Applied Psychology</i> · 2019–2023
+        <br>
+        <span class="muted" data-i18n="edu_swjtu_tags">
+          Statistics · Cognitive &amp; Social Psychology · Psychometrics · SRTP Project ·
+          Thesis on sensation seeking &amp; wellbeing
+        </span>
+      </div>
     </section>
 
-    <!-- 6) FOR EMPLOYERS -->
+    <!-- ============ 6) FOR EMPLOYERS ============ -->
     <section id="employers">
-      <div class="section__head"><h2 class="section__title" data-i18n="emp_title">For Employers</h2><div class="rule"></div></div>
+      <div class="section__head">
+        <h2 class="section__title" data-i18n="emp_title">For Employers</h2>
+        <div class="rule"></div>
+      </div>
+
       <div class="card">
-        <p><b data-i18n="emp_roles_t">Target Roles:</b> <span data-i18n="emp_roles">UX Researcher · User Research Specialist · Human–AI Interaction Evaluator · Junior Product Research PM · Mixed‑Methods Researcher</span></p>
-        <p><b data-i18n="emp_keywords_t">Keywords:</b> <span data-i18n="emp_keywords">User Research · HAI · Cognitive Evaluation · Usability Testing · Experimental Design · Data Analysis · Collaboration · Stakeholder Communication</span></p>
+        <p>
+          <b data-i18n="emp_roles_t">Target Roles:</b>
+          <span data-i18n="emp_roles">
+            UX Researcher · User Research Specialist · Human–AI Interaction Evaluator ·
+            Junior Product Research PM · Mixed-Methods Researcher
+          </span>
+        </p>
+
+        <p>
+          <b data-i18n="emp_keywords_t">Keywords:</b>
+          <span data-i18n="emp_keywords">
+            User Research · HAI · Cognitive Evaluation · Usability Testing · Experimental Design ·
+            Data Analysis · Collaboration · Stakeholder Communication
+          </span>
+        </p>
+
         <p><b data-i18n="emp_help_t">How I Can Help:</b></p>
         <ul class="bul">
           <li data-i18n="emp_h1">Translate research into actionable business insights.</li>
           <li data-i18n="emp_h2">Build standardized reporting templates/frameworks.</li>
-          <li data-i18n="emp_h3">Design multi‑method usability & experience evaluations.</li>
+          <li data-i18n="emp_h3">Design multi-method usability &amp; experience evaluations.</li>
           <li data-i18n="emp_h4">Bridge research, product, and design for alignment.</li>
-          <li data-i18n="emp_h5">Support AI–Human comparative experiments & analysis.</li>
+          <li data-i18n="emp_h5">Support AI–Human comparative experiments &amp; analysis.</li>
         </ul>
-        <p><b data-i18n="emp_avail_t">Availability & Relocation:</b> <span data-i18n="emp_avail">Visa‑ready for Germany/EU; remote or on‑site; available from Fall 2025; bilingual collaboration (EN/ZH).</span></p>
-        <p><b data-i18n="emp_dl_t">Downloads:</b> <a href="assets/CV_MuziChen_EN.pdf" data-i18n="emp_dl">1‑Page CV</a></p>
+
+        <p>
+          <b data-i18n="emp_avail_t">Availability &amp; Relocation:</b>
+          <span data-i18n="emp_avail">
+            Visa-ready for Germany/EU; remote or on-site; available from Fall 2025; bilingual
+            collaboration (EN/ZH).
+          </span>
+        </p>
+
+        <p>
+          <b data-i18n="emp_dl_t">Downloads:</b>
+          <a href="assets/CV_MuziChen_EN.pdf" data-i18n="emp_dl">1-Page CV</a>
+        </p>
       </div>
     </section>
 
-    <!-- 7) CONTACT -->
+    <!-- ============ 7) CONTACT ============ -->
     <section id="contact">
-      <div class="section__head"><h2 class="section__title" data-i18n="contact_title">Contact</h2><div class="rule"></div></div>
+      <div class="section__head">
+        <h2 class="section__title" data-i18n="contact_title">Contact</h2>
+        <div class="rule"></div>
+      </div>
+
       <div class="card">
-        <p>📧 <b data-i18n="contact_pers_label">Personal Email:</b> <a href="mailto:monicachen0319@gmail.com">monicachen0319@gmail.com</a> · 🏫 <b data-i18n="contact_acad_label">Academic Email:</b> <a href="mailto:muzichen@stu.pku.edu.cn">muzichen@stu.pku.edu.cn</a> · 💼 <b>LinkedIn:</b> <a href="https://linkedin.com/in/muzichen" target="_blank" rel="noopener">linkedin.com/in/muzichen</a></p>
+        <p>
+          📧 <b data-i18n="contact_pers_label">Personal Email:</b>
+          <a href="mailto:monicachen0319@gmail.com">monicachen0319@gmail.com</a>
+          ·
+          🏫 <b data-i18n="contact_acad_label">Academic Email:</b>
+          <a href="mailto:muzichen@stu.pku.edu.cn">muzichen@stu.pku.edu.cn</a>
+          ·
+          💼 <b>LinkedIn:</b>
+          <a href="https://linkedin.com/in/muzichen" target="_blank" rel="noopener">
+            linkedin.com/in/muzichen
+          </a>
+        </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">© <span id="year"></span> Muzi Chen · <span data-i18n="foot">All rights reserved.</span></div>
+    <div class="wrap">
+      © <span id="year"></span> Muzi Chen · <span data-i18n="foot">All rights reserved.</span>
+    </div>
   </footer>
 
   <script>
-    // i18n dictionary (EN/DE)
-    const i18n={
-      en:{nav_about:"About",nav_projects:"Projects",nav_experience:"Experience",nav_skills:"Skills",nav_edu:"Education",nav_employers:"For Employers",nav_contact:"Contact",about_h1:"Muzi Chen",about_p1:"M.A. student at Peking University, dedicated to translating complex research into business-ready insights. Visa-ready and relocation-ready for employment in Germany / EU.",about_chip1:"UX Research",about_chip2:"Human–AI Interaction",about_chip3:"User-Centered Evaluation",about_l1:"Industry × Research Collaboration: MSRA · Xiaomi · Kuaishou — user research, cross-team communication, reporting, business alignment.",about_l2:"Methods × Tools: Experimental design, usability testing, interviews & surveys; SPSS, Python, Microsoft 365; decision-oriented insights.",about_l3:"Languages & Culture: English (IELTS 7.5), German A2, Spanish A2, Chinese (native); cross-cultural collaboration.",cta_cv:"📄 Download CV (PDF)",cta_email:"✉️ Email Me",cta_linkedin:"💼 LinkedIn",proj_title:"Portfolio / Projects",bg:"Background",goal:"Goal",role:"Role",methods:"Methods",results:"Results",proj_xiaomi_bg:"The International Division needed to present complex technical solutions clearly to clients across Europe and the Middle East.",proj_xiaomi_goal:"Optimize B2B pre-sales communication and improve clarity/consistency in solution presentations.",proj_xiaomi_role:"Led content rewriting, presentation design, and cross-language collaboration as the psychology/communication specialist.",proj_xiaomi_methods:"5 cross-regional meetings; co-defined pain points; rebuilt logic with visual templates; organized feedback loops.",proj_xiaomi_results:"15+ revised decks; ~20% approval increase; unified PPT & narrative template.",proj_tt_bg:"Douyin sought to understand individual engagement patterns to inform feature optimization.",proj_tt_goal:"Analyze motivation & control failure mechanisms using behavioral data.",proj_tt_role:"Designed surveys; cleaned data; visualized and profiled users.",proj_tt_methods:"433 valid responses; EFA & SEM (SPSS); cross-team interpretation.",proj_tt_results:"Report adopted for training; model inspired a paper under review.",proj_msra_bg:"Interdisciplinary teams needed efficient coordination between academia and engineering.",proj_msra_goal:"Standardize documentation and meeting protocols for traceability.",proj_msra_role:"Built doc framework; authored structured minutes; aligned RA/engineers.",proj_msra_methods:"Unified templates; summarized 4 sub‑projects; tracked weekly actions.",proj_msra_results:"Improved efficiency; reusable docs for exchanges; operational model.",proj_thu_bg:"Large-scale study on spatial navigation & AI simulation (6,000+ participants).",proj_thu_goal:"Identify factors of navigation difficulty; build human–AI comparability.",proj_thu_role:"Designed tasks; collected data; extracted spatial features; modeled difficulty.",proj_thu_methods:"Quantified 10k+ maps (Python: path length, turns, dead‑ends, branching); modeled RT/error/deviation; stats on feature–difficulty.",proj_thu_results:"80+ predictors identified; standardized extraction scripts; used for AI–Human comparison papers.",proj_poly_bg:"Client needed data-driven optimization of buyer personas & decisions.",proj_poly_goal:"Psychographic segmentation to guide strategy.",proj_poly_role:"Data preprocessing, persona visualization, reporting; supported client pitch.",proj_poly_methods:"Integrated CRM & surveys; combined behavior + psychology; dashboards.",proj_poly_results:"3 key personas in annual report; standardized viz templates.",exp_title:"Experience",exp_xiaomi_title:"International Pre-Sales Engineer",exp_xiaomi_b1:"Translated technical solutions into client-ready decks, improving clarity & approvals.",exp_xiaomi_b2:"Coordinated engineering, sales, and overseas teams.",exp_xiaomi_b3:"Designed reusable presentation & scripting templates.",exp_ms_title:"Academic Collaboration",exp_ms_b1:"Supported interdisciplinary AI projects via data summaries & doc management.",exp_ms_b2:"Standardized progress reports & presentation templates.",exp_ms_b3:"Kept academia–engineering alignment with meeting documentation.",exp_ks_title:"User Research",exp_ks_b1:"Audience segmentation with behavior/demographics.",exp_ks_b2:"Clustering (K‑means, hierarchical) & RFM; stability validation.",exp_ks_b3:"Collaborated on targeting & push strategies; designed A/B KPIs.",exp_thu_b1:"Designed spatial navigation experiments (6,000+ participants).",exp_thu_b2:"Extracted 80+ spatial features; predictive modeling.",exp_thu_b3:"AI–Human comparison pipeline; standardized scripts.",exp_sv_b1:"SDT & SCT frameworks; motivation–control–outcome SEM.",exp_sv_b2:"433 surveys; paper submitted to SSCI Q1 journal.",exp_poly_b1:"Built 3 buyer personas using CRM & survey data.",exp_poly_b2:"Clustering in Excel/Python; visuals for executives.",skills_title:"Skills & Tools",skills_user:"User Research & Evaluation",skills_user_p:"Usability Testing · Interviews · Survey Design & Psychometrics · Personas · Journeys · A/B Testing · KPI Tracking",skills_methods:"Research Methods",skills_methods_p:"Experimental Design · Survey Analysis · SEM · Qualitative Coding · Mixed Methods · AI–Human Comparative Research",skills_data:"Data & Tools",skills_data_p:"SPSS · Python · Excel · Matplotlib · Plotly · Power BI · Microsoft 365 · Notion · Jira · Figma · Miro · Axure · Qualtrics · NVivo · GitHub · Overleaf",skills_soft:"Communication & Soft Skills",skills_soft_p:"Structured Reporting · Cross‑functional Collaboration · Stakeholder Presentations · Multilingual Communication · Documentation",skills_lang:"Languages",lang_en:"English: C1, IELTS 7.5",lang_de:"German: A2 (in progress)",lang_es:"Spanish: A2 (in progress)",lang_zh:"Chinese: Native",edu_title:"Education & Honors",edu_pku_tags:"Data Mining · Public Opinion Analysis · Research Methods · Social Psychology · First‑Class Scholarship (2024) · Peer Mentor",edu_tre_tags:"Social/Personality Psychology · Intercultural Communication · Experimental Design · English‑medium",edu_swjtu_tags:"Statistics · Cognitive & Social Psychology · Psychometrics · SRTP Project · Thesis on sensation seeking & wellbeing",emp_title:"For Employers",emp_roles_t:"Target Roles:",emp_roles:"UX Researcher · User Research Specialist · Human–AI Interaction Evaluator · Junior Product Research PM · Mixed‑Methods Researcher",emp_keywords_t:"Keywords:",emp_keywords:"User Research · HAI · Cognitive Evaluation · Usability Testing · Experimental Design · Data Analysis · Collaboration · Stakeholder Communication",emp_help_t:"How I Can Help:",emp_h1:"Translate research into actionable business insights.",emp_h2:"Build standardized reporting templates/frameworks.",emp_h3:"Design multi‑method usability & experience evaluations.",emp_h4:"Bridge research, product, and design for alignment.",emp_h5:"Support AI–Human comparative experiments & analysis.",emp_avail_t:"Availability & Relocation:",emp_avail:"Visa‑ready for Germany/EU; remote or on‑site; available from Fall 2025; bilingual collaboration (EN/ZH).",emp_dl_t:"Downloads:",emp_dl:"1‑Page CV",contact_title:"Contact",contact_pers_label:"Personal Email:",contact_acad_label:"Academic Email:",foot:"All rights reserved."},
-      de:{nav_about:"Über mich",nav_projects:"Projekte",nav_experience:"Erfahrung",nav_skills:"Skills",nav_edu:"Ausbildung",nav_employers:"Für Arbeitgeber",nav_contact:"Kontakt",about_h1:"Muzi Chen",about_p1:"M.A.-Studentin an der Peking-Universität, fokussiert darauf, komplexe Forschung in geschäftsrelevante Erkenntnisse zu übersetzen. Visumsbereit und umzugsbereit für Beschäftigung in Deutschland/EU.",about_chip1:"UX Research",about_chip2:"Mensch–KI‑Interaktion",about_chip3:"Nutzerzentrierte Evaluation",about_l1:"Industrie × Forschung: MSRA · Xiaomi · Kuaishou — User Research, Team‑Kommunikation, Reporting, Business‑Abgleich.",about_l2:"Methoden × Tools: Versuchsdesign, Usability‑Tests, Interviews & Umfragen; SPSS, Python, Microsoft 365; entscheidungsorientierte Insights.",about_l3:"Sprachen & Kultur: Englisch (IELTS 7.5), Deutsch A2, Spanisch A2, Chinesisch (Muttersprache); interkulturelle Zusammenarbeit.",cta_cv:"📄 Lebenslauf (PDF)",cta_email:"✉️ E‑Mail senden",cta_linkedin:"💼 LinkedIn",proj_title:"Portfolio / Projekte",bg:"Hintergrund",goal:"Ziel",role:"Rolle",methods:"Methoden",results:"Ergebnis/Impact",proj_xiaomi_bg:"Die International Division musste komplexe technische Lösungen für Kunden in Europa und dem Nahen Osten klar darstellen.",proj_xiaomi_goal:"B2B‑Presales‑Kommunikation optimieren; Klarheit/Konsistenz der Präsentationen steigern.",proj_xiaomi_role:"Leitung von Content‑Neustrukturierung, Präsentationsdesign und mehrsprachiger Zusammenarbeit.",proj_xiaomi_methods:"5 länderübergreifende Meetings; Pain Points definiert; Logik mit Visual‑Templates neu aufgebaut; Feedback‑Schleifen organisiert.",proj_xiaomi_results:"15+ überarbeitete Decks; ~20% höhere Genehmigungsrate; einheitliches PPT‑ & Narrative‑Template.",proj_tt_bg:"Douyin wollte individuelle Nutzungsprofile verstehen, um Features zu optimieren.",proj_tt_goal:"Psychologische Mechanismen von Motivation & Kontrollversagen analysieren.",proj_tt_role:"Umfragen gestaltet; Daten bereinigt; Visualisierung & Nutzerprofile erstellt.",proj_tt_methods:"433 gültige Antworten; EFA & SEM (SPSS); abteilungsübergreifende Interpretation.",proj_tt_results:"Bericht für internes Training übernommen; Modell inspirierte eine eingereichte Publikation.",proj_msra_bg:"Interdisziplinäre Teams brauchten effiziente Koordination zwischen Wissenschaft & Engineering.",proj_msra_goal:"Standardisierte Dokumentation & Meeting‑Protokolle für Nachvollziehbarkeit.",proj_msra_role:"Dokumentenrahmen aufgebaut; strukturierte Minutes verfasst; RAs/Engineers abgestimmt.",proj_msra_methods:"Einheitliche Templates; 4 Teilprojekte zusammengefasst; wöchentliche Actions getrackt.",proj_msra_results:"Höhere Effizienz; wiederverwendbare Dokus; operables Modell.",proj_thu_bg:"Großstudie zur räumlichen Navigation & KI‑Simulation (6.000+ TN).",proj_thu_goal:"Faktoren der Navigationsschwierigkeit identifizieren; Vergleich Mensch–KI ermöglichen.",proj_thu_role:"Aufgaben entworfen; Daten erhoben; räumliche Merkmale extrahiert; Schwierigkeit modelliert.",proj_thu_methods:"10k+ Karten quantifiziert (Python: Pfadlänge, Wendungen, Sackgassen, Verzweigung); RT/Fehler/Abweichung modelliert.",proj_thu_results:"80+ Prädiktoren identifiziert; standardisierte Extraktionsskripte; Basis für Vergleichsstudien.",proj_poly_bg:"Kunde benötigte datengetriebene Optimierung von Käufer‑Personas & Entscheidungen.",proj_poly_goal:"Psychografische Segmentierung zur Strategieableitung.",proj_poly_role:"Datenvorverarbeitung, Persona‑Visualisierung, Reporting; Pitch‑Support.",proj_poly_methods:"CRM & Umfragen integriert; Verhalten + Psychologie kombiniert; Dashboards erstellt.",proj_poly_results:"3 Kern‑Personas im Jahresreport; standardisierte Visual‑Templates.",exp_title:"Erfahrung",exp_xiaomi_title:"International Pre‑Sales Engineer",exp_xiaomi_b1:"Technische Lösungen in kundenfertige Decks übersetzt; Klarheit & Genehmigungen gesteigert.",exp_xiaomi_b2:"Bedarfe mit Engineering, Sales und Auslandsteams abgestimmt.",exp_xiaomi_b3:"Wiederverwendbare Präsentations‑ & Skript‑Templates entwickelt.",exp_ms_title:"Academic Collaboration",exp_ms_b1:"Interdisziplinäre KI‑Projekte durch Datensummaries & Doku gemanagt.",exp_ms_b2:"Standardisierte Fortschrittsberichte & Präsentations‑Templates.",exp_ms_b3:"Abgleich zwischen Wissenschaft & Engineering durch Protokolle.",exp_ks_title:"User Research",exp_ks_b1:"Zielgruppensegmente nach Verhalten/Demografie.",exp_ks_b2:"Clustering (K‑means, hierarchisch) & RFM; Stabilität validiert.",exp_ks_b3:"Targeting/Push‑Strategien mitdefiniert; A/B‑KPIs gestaltet.",exp_thu_b1:"Navigationsexperimente (6.000+ TN) entworfen.",exp_thu_b2:"80+ räumliche Merkmale extrahiert; Prädiktionsmodelle.",exp_thu_b3:"Mensch‑KI‑Vergleichs‑Pipeline; standardisierte Skripte.",exp_sv_b1:"SDT & SCT; SEM zu Motivation–Kontrollversagen–Outcome.",exp_sv_b2:"433 Umfragen; Paper bei SSCI Q1 eingereicht.",exp_poly_b1:"3 Käufer‑Personas auf Basis von CRM & Umfragen entwickelt.",exp_poly_b2:"Clustering mit Excel/Python; Visuals fürs Management.",skills_title:"Skills & Tools",skills_user:"User Research & Evaluation",skills_user_p:"Usability‑Tests · Interviews · Umfragen & Psychometrie · Personas · Journeys · A/B‑Tests · KPI‑Tracking",skills_methods:"Forschungsmethoden",skills_methods_p:"Versuchsdesign · Survey‑Analyse · SEM · Qualitative Kodierung · Mixed Methods · Mensch‑KI‑Vergleich",skills_data:"Daten & Tools",skills_data_p:"SPSS · Python · Excel · Matplotlib · Plotly · Power BI · Microsoft 365 · Notion · Jira · Figma · Miro · Axure · Qualtrics · NVivo · GitHub · Overleaf",skills_soft:"Kommunikation & Soft Skills",skills_soft_p:"Strukturiertes Reporting · Abteilungsübergreifende Zusammenarbeit · Stakeholder‑Präsentationen · Mehrsprachige Kommunikation · Dokumentation",skills_lang:"Sprachen",lang_en:"Englisch: C1, IELTS 7.5",lang_de:"Deutsch: A2 (in Arbeit)",lang_es:"Spanisch: A2 (in Arbeit)",lang_zh:"Chinesisch: Muttersprache",edu_title:"Ausbildung & Auszeichnungen",edu_pku_tags:"Data Mining · Online‑Meinungsanalyse · Forschungsmethoden · Sozialpsychologie · Erstklassiges Stipendium (2024) · Peer‑Mentorin",edu_tre_tags:"Sozial/Personalitätspsychologie · Interkulturelle Kommunikation · Versuchsdesign · Englischsprachig",edu_swjtu_tags:"Statistik · Kognitive & Sozialpsychologie · Psychometrie · SRTP · Abschlussarbeit zu Sensation Seeking & Wohlbefinden",emp_title:"Für Arbeitgeber",emp_roles_t:"Zielrollen:",emp_roles:"UX Researcher · User Research Specialist · Evaluator Mensch–KI · Junior Product Research PM · Mixed‑Methods Researcher",emp_keywords_t:"Schlagworte:",emp_keywords:"User Research · HAI · Kognitive Evaluation · Usability‑Tests · Versuchsdesign · Datenanalyse · Kollaboration · Stakeholder‑Kommunikation",emp_help_t:"Wie ich helfen kann:",emp_h1:"Forschung in umsetzbare Business‑Insights übersetzen.",emp_h2:"Standardisierte Reporting‑Templates/Frameworks bauen.",emp_h3:"Multimethodische Usability‑ & Experience‑Evaluationen.",emp_h4:"Brücke zwischen Research, Produkt & Design.",emp_h5:"Mensch‑KI‑Vergleichsexperimente & Analyse unterstützen.",emp_avail_t:"Verfügbarkeit & Umzug:",emp_avail:"Visumsbereit für Deutschland/EU; Remote oder vor Ort; verfügbar ab Herbst 2025; zweisprachige Zusammenarbeit (EN/ZH).",emp_dl_t:"Downloads:",emp_dl:"1‑seitiger CV",contact_title:"Kontakt",contact_pers_label:"Private E‑Mail:",contact_acad_label:"Akademische E‑Mail",foot:"Alle Rechte vorbehalten."}
+    /* ===============================
+       i18n text dictionaries
+       =============================== */
+    const i18n = {
+      en: {
+        // nav
+        nav_about: "About",
+        nav_projects: "Projects",
+        nav_experience: "Experience",
+        nav_skills: "Skills",
+        nav_edu: "Education",
+        nav_employers: "For Employers",
+        nav_contact: "Contact",
+        menu: "Menu",
+
+        // about
+        about_h1: "Muzi Chen",
+        about_p1:
+          "M.A. student at Peking University, dedicated to translating complex research into business-ready insights. Visa-ready and relocation-ready for employment in Germany / EU.",
+        about_chip1: "UX Research",
+        about_chip2: "Human–AI Interaction",
+        about_chip3: "User-Centered Evaluation",
+        about_l1:
+          "Industry × Research Collaboration: MSRA · Xiaomi · Kuaishou — user research, cross-team communication, reporting, business alignment.",
+        about_l2:
+          "Methods × Tools: Experimental design, usability testing, interviews & surveys; SPSS, Python, Microsoft 365; decision-oriented insights.",
+        about_l3:
+          "Languages & Culture: English (IELTS 7.5), German A2, Spanish A2, Chinese (native); cross-cultural collaboration.",
+        cta_cv: "📄 Download CV (PDF)",
+        cta_email: "✉️ Email Me",
+        cta_linkedin: "💼 LinkedIn",
+
+        // projects
+        proj_title: "Portfolio / Projects",
+        bg: "Background",
+        goal: "Goal",
+        role: "Role",
+        methods: "Methods",
+        results: "Results",
+        proj_xiaomi_bg:
+          "The International Division needed to present complex technical solutions clearly to clients across Europe and the Middle East.",
+        proj_xiaomi_goal:
+          "Optimize B2B pre-sales communication and improve clarity/consistency in solution presentations.",
+        proj_xiaomi_role:
+          "Led content rewriting, presentation design, and cross-language collaboration as the psychology/communication specialist.",
+        proj_xiaomi_methods:
+          "5 cross-regional meetings; co-defined pain points; rebuilt logic with visual templates; organized feedback loops.",
+        proj_xiaomi_results:
+          "15+ revised decks; ~20% approval increase; unified PPT & narrative template.",
+        proj_tt_bg:
+          "Douyin sought to understand individual engagement patterns to inform feature optimization.",
+        proj_tt_goal:
+          "Analyze motivation & control failure mechanisms using behavioral data.",
+        proj_tt_role:
+          "Designed surveys; cleaned data; visualized and profiled users.",
+        proj_tt_methods:
+          "433 valid responses; EFA & SEM (SPSS); cross-team interpretation.",
+        proj_tt_results:
+          "Report adopted for training; model inspired a paper under review.",
+        proj_msra_bg:
+          "Interdisciplinary teams needed efficient coordination between academia and engineering.",
+        proj_msra_goal:
+          "Standardize documentation and meeting protocols for traceability.",
+        proj_msra_role:
+          "Built doc framework; authored structured minutes; aligned RA/engineers.",
+        proj_msra_methods:
+          "Unified templates; summarized 4 sub-projects; tracked weekly actions.",
+        proj_msra_results:
+          "Improved efficiency; reusable docs for exchanges; operational model.",
+        proj_thu_bg:
+          "Large-scale study on spatial navigation & AI simulation (6,000+ participants).",
+        proj_thu_goal:
+          "Identify factors of navigation difficulty; build human–AI comparability.",
+        proj_thu_role:
+          "Designed tasks; collected data; extracted spatial features; modeled difficulty.",
+        proj_thu_methods:
+          "Quantified 10k+ maps (Python: path length, turns, dead-ends, branching); modeled RT/error/deviation; stats on feature–difficulty.",
+        proj_thu_results:
+          "80+ predictors identified; standardized extraction scripts; used for AI–Human comparison papers.",
+        proj_poly_bg:
+          "Client needed data-driven optimization of buyer personas & decisions.",
+        proj_poly_goal:
+          "Psychographic segmentation to guide strategy.",
+        proj_poly_role:
+          "Data preprocessing, persona visualization, reporting; supported client pitch.",
+        proj_poly_methods:
+          "Integrated CRM & surveys; combined behavior + psychology; dashboards.",
+        proj_poly_results:
+          "3 key personas in annual report; standardized viz templates.",
+
+        // experience
+        exp_title: "Experience",
+        exp_xiaomi_title: "International Pre-Sales Engineer",
+        exp_xiaomi_b1:
+          "Translated technical solutions into client-ready decks, improving clarity & approvals.",
+        exp_xiaomi_b2:
+          "Coordinated engineering, sales, and overseas teams.",
+        exp_xiaomi_b3:
+          "Designed reusable presentation & scripting templates.",
+        exp_ms_title: "Academic Collaboration",
+        exp_ms_b1:
+          "Supported interdisciplinary AI projects via data summaries & doc management.",
+        exp_ms_b2:
+          "Standardized progress reports & presentation templates.",
+        exp_ms_b3:
+          "Kept academia–engineering alignment with meeting documentation.",
+        exp_ks_title: "User Research",
+        exp_ks_b1:
+          "Audience segmentation with behavior/demographics.",
+        exp_ks_b2:
+          "Clustering (K-means, hierarchical) & RFM; stability validation.",
+        exp_ks_b3:
+          "Collaborated on targeting & push strategies; designed A/B KPIs.",
+        exp_thu_b1:
+          "Designed spatial navigation experiments (6,000+ participants).",
+        exp_thu_b2:
+          "Extracted 80+ spatial features; predictive modeling.",
+        exp_thu_b3:
+          "AI–Human comparison pipeline; standardized scripts.",
+        exp_sv_b1:
+          "SDT & SCT frameworks; motivation–control–outcome SEM.",
+        exp_sv_b2:
+          "433 surveys; paper submitted to SSCI Q1 journal.",
+        exp_poly_b1:
+          "Built 3 buyer personas using CRM & survey data.",
+        exp_poly_b2:
+          "Clustering in Excel/Python; visuals for executives.",
+
+        // skills
+        skills_title: "Skills & Tools",
+        skills_user: "User Research & Evaluation",
+        skills_user_p:
+          "Usability Testing · Interviews · Survey Design & Psychometrics · Personas · Journeys · A/B Testing · KPI Tracking",
+        skills_methods: "Research Methods",
+        skills_methods_p:
+          "Experimental Design · Survey Analysis · SEM · Qualitative Coding · Mixed Methods · AI–Human Comparative Research",
+        skills_data: "Data & Tools",
+        skills_data_p:
+          "SPSS · Python · Excel · Matplotlib · Plotly · Power BI · Microsoft 365 · Notion · Jira · Figma · Miro · Axure · Qualtrics · NVivo · GitHub · Overleaf",
+        skills_soft: "Communication & Soft Skills",
+        skills_soft_p:
+          "Structured Reporting · Cross-functional Collaboration · Stakeholder Presentations · Multilingual Communication · Documentation",
+        skills_lang: "Languages",
+        lang_en: "English: C1, IELTS 7.5",
+        lang_de: "German: A2 (in progress)",
+        lang_es: "Spanish: A2 (in progress)",
+        lang_zh: "Chinese: Native",
+
+        // education
+        edu_title: "Education & Honors",
+        edu_pku_tags:
+          "Data Mining · Public Opinion Analysis · Research Methods · Social Psychology · First-Class Scholarship (2024) · Peer Mentor",
+        edu_tre_tags:
+          "Social/Personality Psychology · Intercultural Communication · Experimental Design · English-medium",
+        edu_swjtu_tags:
+          "Statistics · Cognitive & Social Psychology · Psychometrics · SRTP Project · Thesis on sensation seeking & wellbeing",
+
+        // employers
+        emp_title: "For Employers",
+        emp_roles_t: "Target Roles:",
+        emp_roles:
+          "UX Researcher · User Research Specialist · Human–AI Interaction Evaluator · Junior Product Research PM · Mixed-Methods Researcher",
+        emp_keywords_t: "Keywords:",
+        emp_keywords:
+          "User Research · HAI · Cognitive Evaluation · Usability Testing · Experimental Design · Data Analysis · Collaboration · Stakeholder Communication",
+        emp_help_t: "How I Can Help:",
+        emp_h1: "Translate research into actionable business insights.",
+        emp_h2: "Build standardized reporting templates/frameworks.",
+        emp_h3: "Design multi-method usability & experience evaluations.",
+        emp_h4: "Bridge research, product, and design for alignment.",
+        emp_h5: "Support AI–Human comparative experiments & analysis.",
+        emp_avail_t: "Availability & Relocation:",
+        emp_avail:
+          "Visa-ready for Germany/EU; remote or on-site; available from Fall 2025; bilingual collaboration (EN/ZH).",
+        emp_dl_t: "Downloads:",
+        emp_dl: "1-Page CV",
+
+        // contact
+        contact_title: "Contact",
+        contact_pers_label: "Personal Email:",
+        contact_acad_label: "Academic Email:",
+
+        // footer
+        foot: "All rights reserved."
+      },
+
+      de: {
+        // nav
+        nav_about: "Über mich",
+        nav_projects: "Projekte",
+        nav_experience: "Erfahrung",
+        nav_skills: "Skills",
+        nav_edu: "Ausbildung",
+        nav_employers: "Für Arbeitgeber",
+        nav_contact: "Kontakt",
+        menu: "Menü",
+
+        // about
+        about_h1: "Muzi Chen",
+        about_p1:
+          "M.A.-Studentin an der Peking-Universität, fokussiert darauf, komplexe Forschung in geschäftsrelevante Erkenntnisse zu übersetzen. Visumsbereit und umzugsbereit für Beschäftigung in Deutschland/EU.",
+        about_chip1: "UX Research",
+        about_chip2: "Mensch–KI-Interaktion",
+        about_chip3: "Nutzerzentrierte Evaluation",
+        about_l1:
+          "Industrie × Forschung: MSRA · Xiaomi · Kuaishou — User Research, Team-Kommunikation, Reporting, Business-Abgleich.",
+        about_l2:
+          "Methoden × Tools: Versuchsdesign, Usability-Tests, Interviews & Umfragen; SPSS, Python, Microsoft 365; entscheidungsorientierte Insights.",
+        about_l3:
+          "Sprachen & Kultur: Englisch (IELTS 7.5), Deutsch A2, Spanisch A2, Chinesisch (Muttersprache); interkulturelle Zusammenarbeit.",
+        cta_cv: "📄 Lebenslauf (PDF)",
+        cta_email: "✉️ E-Mail senden",
+        cta_linkedin: "💼 LinkedIn",
+
+        // projects
+        proj_title: "Portfolio / Projekte",
+        bg: "Hintergrund",
+        goal: "Ziel",
+        role: "Rolle",
+        methods: "Methoden",
+        results: "Ergebnis / Impact",
+        proj_xiaomi_bg:
+          "Die International Division musste komplexe technische Lösungen für Kunden in Europa und dem Nahen Osten klar darstellen.",
+        proj_xiaomi_goal:
+          "B2B-Presales-Kommunikation optimieren; Klarheit/Konsistenz der Präsentationen steigern.",
+        proj_xiaomi_role:
+          "Leitung von Content-Neustrukturierung, Präsentationsdesign und mehrsprachiger Zusammenarbeit.",
+        proj_xiaomi_methods:
+          "5 länderübergreifende Meetings; Pain Points definiert; Logik mit Visual-Templates neu aufgebaut; Feedback-Schleifen organisiert.",
+        proj_xiaomi_results:
+          "15+ überarbeitete Decks; ~20% höhere Genehmigungsrate; einheitliches PPT- & Narrative-Template.",
+        proj_tt_bg:
+          "Douyin wollte individuelle Nutzungsprofile verstehen, um Features zu optimieren.",
+        proj_tt_goal:
+          "Psychologische Mechanismen von Motivation & Kontrollversagen analysieren.",
+        proj_tt_role:
+          "Umfragen gestaltet; Daten bereinigt; Visualisierung & Nutzerprofile erstellt.",
+        proj_tt_methods:
+          "433 gültige Antworten; EFA & SEM (SPSS); abteilungsübergreifende Interpretation.",
+        proj_tt_results:
+          "Bericht für internes Training übernommen; Modell inspirierte eine eingereichte Publikation.",
+        proj_msra_bg:
+          "Interdisziplinäre Teams brauchten effiziente Koordination zwischen Wissenschaft & Engineering.",
+        proj_msra_goal:
+          "Standardisierte Dokumentation & Meeting-Protokolle für Nachvollziehbarkeit.",
+        proj_msra_role:
+          "Dokumentenrahmen aufgebaut; strukturierte Minutes verfasst; RAs/Engineers abgestimmt.",
+        proj_msra_methods:
+          "Einheitliche Templates; 4 Teilprojekte zusammengefasst; wöchentliche Actions getrackt.",
+        proj_msra_results:
+          "Höhere Effizienz; wiederverwendbare Dokus; operables Modell.",
+        proj_thu_bg:
+          "Großstudie zur räumlichen Navigation & KI-Simulation (6.000+ TN).",
+        proj_thu_goal:
+          "Faktoren der Navigationsschwierigkeit identifizieren; Vergleich Mensch–KI ermöglichen.",
+        proj_thu_role:
+          "Aufgaben entworfen; Daten erhoben; räumliche Merkmale extrahiert; Schwierigkeit modelliert.",
+        proj_thu_methods:
+          "10k+ Karten quantifiziert (Python: Pfadlänge, Wendungen, Sackgassen, Verzweigung); RT/Fehler/Abweichung modelliert.",
+        proj_thu_results:
+          "80+ Prädiktoren identifiziert; standardisierte Extraktionsskripte; Basis für Vergleichsstudien.",
+        proj_poly_bg:
+          "Kunde benötigte datengetriebene Optimierung von Käufer-Personas & Entscheidungen.",
+        proj_poly_goal:
+          "Psychografische Segmentierung zur Strategieableitung.",
+        proj_poly_role:
+          "Datenvorverarbeitung, Persona-Visualisierung, Reporting; Pitch-Support.",
+        proj_poly_methods:
+          "CRM & Umfragen integriert; Verhalten + Psychologie kombiniert; Dashboards erstellt.",
+        proj_poly_results:
+          "3 Kern-Personas im Jahresreport; standardisierte Visual-Templates.",
+
+        // experience
+        exp_title: "Erfahrung",
+        exp_xiaomi_title: "International Pre-Sales Engineer",
+        exp_xiaomi_b1:
+          "Technische Lösungen in kundenfertige Decks übersetzt; Klarheit & Genehmigungen gesteigert.",
+        exp_xiaomi_b2:
+          "Bedarfe mit Engineering, Sales und Auslandsteams abgestimmt.",
+        exp_xiaomi_b3:
+          "Wiederverwendbare Präsentations- & Skript-Templates entwickelt.",
+        exp_ms_title: "Academic Collaboration",
+        exp_ms_b1:
+          "Interdisziplinäre KI-Projekte durch Datensummaries & Doku gemanagt.",
+        exp_ms_b2:
+          "Standardisierte Fortschrittsberichte & Präsentations-Templates.",
+        exp_ms_b3:
+          "Abgleich zwischen Wissenschaft & Engineering durch Protokolle.",
+        exp_ks_title: "User Research",
+        exp_ks_b1:
+          "Zielgruppensegmente nach Verhalten/Demografie.",
+        exp_ks_b2:
+          "Clustering (K-means, hierarchisch) & RFM; Stabilität validiert.",
+        exp_ks_b3:
+          "Targeting/Push-Strategien mitdefiniert; A/B-KPIs gestaltet.",
+        exp_thu_b1:
+          "Navigationsexperimente (6.000+ TN) entworfen.",
+        exp_thu_b2:
+          "80+ räumliche Merkmale extrahiert; Prädiktionsmodelle.",
+        exp_thu_b3:
+          "Mensch-KI-Vergleichs-Pipeline; standardisierte Skripte.",
+        exp_sv_b1:
+          "SDT & SCT; SEM zu Motivation–Kontrollversagen–Outcome.",
+        exp_sv_b2:
+          "433 Umfragen; Paper bei SSCI Q1 eingereicht.",
+        exp_poly_b1:
+          "3 Käufer-Personas auf Basis von CRM & Umfragen entwickelt.",
+        exp_poly_b2:
+          "Clustering mit Excel/Python; Visuals fürs Management.",
+
+        // skills
+        skills_title: "Skills & Tools",
+        skills_user: "User Research & Evaluation",
+        skills_user_p:
+          "Usability-Tests · Interviews · Umfragen & Psychometrie · Personas · Journeys · A/B-Tests · KPI-Tracking",
+        skills_methods: "Forschungsmethoden",
+        skills_methods_p:
+          "Versuchsdesign · Survey-Analyse · SEM · Qualitative Kodierung · Mixed Methods · Mensch-KI-Vergleich",
+        skills_data: "Daten & Tools",
+        skills_data_p:
+          "SPSS · Python · Excel · Matplotlib · Plotly · Power BI · Microsoft 365 · Notion · Jira · Figma · Miro · Axure · Qualtrics · NVivo · GitHub · Overleaf",
+        skills_soft: "Kommunikation & Soft Skills",
+        skills_soft_p:
+          "Strukturiertes Reporting · Abteilungsübergreifende Zusammenarbeit · Stakeholder-Präsentationen · Mehrsprachige Kommunikation · Dokumentation",
+        skills_lang: "Sprachen",
+        lang_en: "Englisch: C1, IELTS 7.5",
+        lang_de: "Deutsch: A2 (in Arbeit)",
+        lang_es: "Spanisch: A2 (in Arbeit)",
+        lang_zh: "Chinesisch: Muttersprache",
+
+        // education
+        edu_title: "Ausbildung & Auszeichnungen",
+        edu_pku_tags:
+          "Data Mining · Online-Meinungsanalyse · Forschungsmethoden · Sozialpsychologie · Erstklassiges Stipendium (2024) · Peer-Mentorin",
+        edu_tre_tags:
+          "Sozial/Personalitätspsychologie · Interkulturelle Kommunikation · Versuchsdesign · Englischsprachig",
+        edu_swjtu_tags:
+          "Statistik · Kognitive & Sozialpsychologie · Psychometrie · SRTP · Abschlussarbeit zu Sensation Seeking & Wohlbefinden",
+
+        // employers
+        emp_title: "Für Arbeitgeber",
+        emp_roles_t: "Zielrollen:",
+        emp_roles:
+          "UX Researcher · User Research Specialist · Evaluator Mensch–KI · Junior Product Research PM · Mixed-Methods Researcher",
+        emp_keywords_t: "Schlagworte:",
+        emp_keywords:
+          "User Research · HAI · Kognitive Evaluation · Usability-Tests · Versuchsdesign · Datenanalyse · Kollaboration · Stakeholder-Kommunikation",
+        emp_help_t: "Wie ich helfen kann:",
+        emp_h1: "Forschung in umsetzbare Business-Insights übersetzen.",
+        emp_h2: "Standardisierte Reporting-Templates/Frameworks bauen.",
+        emp_h3: "Multimethodische Usability- & Experience-Evaluationen.",
+        emp_h4: "Brücke zwischen Research, Produkt & Design.",
+        emp_h5: "Mensch-KI-Vergleichsexperimente & Analyse unterstützen.",
+        emp_avail_t: "Verfügbarkeit & Umzug:",
+        emp_avail:
+          "Visumsbereit für Deutschland/EU; Remote oder vor Ort; verfügbar ab Herbst 2025; zweisprachige Zusammenarbeit (EN/ZH).",
+        emp_dl_t: "Downloads:",
+        emp_dl: "1-seitiger CV",
+
+        // contact
+        contact_title: "Kontakt",
+        contact_pers_label: "Private E-Mail:",
+        contact_acad_label: "Akademische E-Mail",
+
+        // footer
+        foot: "Alle Rechte vorbehalten."
+      }
     };
 
-    // Badge i18n mapping (Experience tags)
-    const badgeI18n={
-      en:{"cross-functional":"cross-functional","communication bridge":"communication bridge","structured reporting":"structured reporting","stakeholder alignment":"stakeholder alignment","alignment":"alignment","knowledge management":"knowledge management","structured documentation":"structured documentation","personas":"personas","targeting":"targeting","clustering":"clustering","a/b testing":"A/B testing","experimental design":"experimental design","data extraction":"data extraction","ai‑human comparison":"AI‑human comparison","self‑determination":"self‑determination","sem":"SEM","academic writing":"academic writing","visual storytelling":"visual storytelling"},
-      de:{"cross-functional":"funktionsübergreifend","communication bridge":"Schnittstellenkommunikation","structured reporting":"strukturiertes Reporting","stakeholder alignment":"Stakeholder‑Alignment","alignment":"Ausrichtung","knowledge management":"Wissensmanagement","structured documentation":"strukturierte Dokumentation","personas":"Personas","targeting":"Targeting","clustering":"Clustering","a/b testing":"A/B‑Tests","experimental design":"Versuchsdesign","data extraction":"Datenextraktion","ai‑human comparison":"Mensch–KI‑Vergleich","self‑determination":"Selbstbestimmung","sem":"SEM","academic writing":"akademisches Schreiben","visual storytelling":"visuelles Storytelling"}
+    /* ===============================
+       Badge translations (Experience tags)
+       =============================== */
+    const badgeI18n = {
+      en: {
+        "cross-functional": "cross-functional",
+        "communication bridge": "communication bridge",
+        "structured reporting": "structured reporting",
+        "stakeholder alignment": "stakeholder alignment",
+        "alignment": "alignment",
+        "knowledge management": "knowledge management",
+        "structured documentation": "structured documentation",
+        "personas": "personas",
+        "targeting": "targeting",
+        "clustering": "clustering",
+        "a/b testing": "A/B testing",
+        "experimental design": "experimental design",
+        "data extraction": "data extraction",
+        "ai-human comparison": "AI-human comparison",
+        "self-determination": "self-determination",
+        "sem": "SEM",
+        "academic writing": "academic writing",
+        "visual storytelling": "visual storytelling"
+      },
+      de: {
+        "cross-functional": "funktionsübergreifend",
+        "communication bridge": "Schnittstellenkommunikation",
+        "structured reporting": "strukturiertes Reporting",
+        "stakeholder alignment": "Stakeholder-Alignment",
+        "alignment": "Ausrichtung",
+        "knowledge management": "Wissensmanagement",
+        "structured documentation": "strukturierte Dokumentation",
+        "personas": "Personas",
+        "targeting": "Targeting",
+        "clustering": "Clustering",
+        "a/b testing": "A/B-Tests",
+        "experimental design": "Versuchsdesign",
+        "data extraction": "Datenextraktion",
+        "ai-human comparison": "Mensch–KI-Vergleich",
+        "self-determination": "Selbstbestimmung",
+        "sem": "SEM",
+        "academic writing": "akademisches Schreiben",
+        "visual storytelling": "visuelles Storytelling"
+      }
     };
 
-    function highlightMetrics(){document.querySelectorAll('[data-metric]').forEach(el=>{const t=el.textContent;el.innerHTML=t.replace(/(~?\s?\d+[\d,]*\s?%|\d+[\d,]*\s?\+|\d+k\+?)/gi,m=>`<span class="kpi">${m.trim()}</span>`)});}
+    /* ===============================
+       Highlight numeric metrics in gold
+       =============================== */
+    function highlightMetrics(){
+      document.querySelectorAll('[data-metric]').forEach(el=>{
+        const t = el.textContent;
+        el.innerHTML = t.replace(/(~?\s?\d+[\d,]*\s?%|\d+[\d,]*\s?\+|\d+k\+?)/gi,
+          m=>`<span class="kpi">${m.trim()}</span>`);
+      });
+    }
 
+    /* ===============================
+       setLang(lang):
+       - apply EN/DE text
+       - swap CV link
+       - toggle active state
+       - translate badges
+       - update Menu / Menü label
+       - store preference & reflect ?lang=
+       =============================== */
     function setLang(lang){
-      const dict=(i18n&&i18n[lang])?i18n[lang]:i18n.en;
-      document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(dict[k]) el.textContent=dict[k];});
-      document.querySelectorAll('.exp-tags .badge').forEach(b=>{const raw=b.textContent.trim();const key=raw.toLowerCase();const translated=(badgeI18n[lang]&&badgeI18n[lang][key])?badgeI18n[lang][key]:raw;b.textContent=translated;});
-      const enBtn=document.getElementById('btn-en');const deBtn=document.getElementById('btn-de');if(enBtn&&deBtn){enBtn.classList.toggle('active',lang==='en');deBtn.classList.toggle('active',lang==='de');}
-      document.documentElement.setAttribute('lang',lang);
-      const cvHref=lang==='de'?'assets/CV_MuziChen_DE.pdf':'assets/CV_MuziChen_EN.pdf';['cvTop','cvAbout'].forEach(id=>{const a=document.getElementById(id);if(a) a.setAttribute('href',cvHref);});
-      try{localStorage.setItem('lang',lang);}catch(e){}
-      const url=new URL(window.location);url.searchParams.set('lang',lang);history.replaceState({},'',url);
+      const dict = (i18n && i18n[lang]) ? i18n[lang] : i18n.en;
+
+      // normal text nodes
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(dict[key]) el.textContent = dict[key];
+      });
+
+      // badges in experience
+      document.querySelectorAll('.exp-tags .badge').forEach(b=>{
+        const raw = b.getAttribute('data-raw') || b.textContent.trim();
+        // store canonical form once so we can re-translate
+        if(!b.getAttribute('data-raw')){
+          b.setAttribute('data-raw', raw.toLowerCase());
+        }
+        const canon = b.getAttribute('data-raw'); // e.g. "cross-functional"
+        const translated = (badgeI18n[lang] && badgeI18n[lang][canon])
+          ? badgeI18n[lang][canon]
+          : raw;
+        b.textContent = translated;
+      });
+
+      // menu label on hamburger
+      const menuLabel = document.getElementById('menu-label');
+      if (menuLabel && dict.menu) {
+        menuLabel.textContent = dict.menu;
+      }
+
+      // language pill active state
+      const enBtn = document.getElementById('btn-en');
+      const deBtn = document.getElementById('btn-de');
+      if(enBtn && deBtn){
+        enBtn.classList.toggle('active', lang === 'en');
+        deBtn.classList.toggle('active', lang === 'de');
+      }
+
+      // html lang attr
+      document.documentElement.setAttribute('lang', lang);
+
+      // CV links + button text in header/about
+      const cvHref = (lang === 'de')
+        ? 'assets/CV_MuziChen_DE.pdf'
+        : 'assets/CV_MuziChen_EN.pdf';
+
+      const cvTop = document.getElementById('cvTop');
+      const cvAbout = document.getElementById('cvAbout');
+      if(cvTop){
+        cvTop.setAttribute('href', cvHref);
+        cvTop.textContent = (lang === 'de') ? '↓ Lebenslauf (PDF)' : '↓ CV (PDF)';
+      }
+      if(cvAbout){
+        cvAbout.setAttribute('href', cvHref);
+        cvAbout.textContent = dict.cta_cv || cvAbout.textContent;
+      }
+
+      // store preference
+      try { localStorage.setItem('lang', lang); } catch(e){}
+
+      // reflect in URL (no reload)
+      const url = new URL(window.location);
+      url.searchParams.set('lang', lang);
+      history.replaceState({}, '', url);
+
+      // refresh metric highlight
       highlightMetrics();
     }
 
-    document.addEventListener('DOMContentLoaded',()=>{
-      const qs=new URLSearchParams(location.search).get('lang');
-      const saved=(()=>{try{return localStorage.getItem('lang')}catch(e){return null}})();
-      const lang=(qs==='de'||qs==='en')?qs:(saved||'en');
+    /* ===============================
+       Init after DOM ready:
+       - restore lang
+       - wire up buttons
+       - mobile menu toggle
+       - dynamic nav height for dropdown
+       =============================== */
+    document.addEventListener('DOMContentLoaded', ()=>{
+      // choose language
+      const qsLang = new URLSearchParams(location.search).get('lang');
+      let savedLang = null;
+      try { savedLang = localStorage.getItem('lang'); } catch(e){}
+      const lang = (qsLang === 'de' || qsLang === 'en') ? qsLang : (savedLang || 'en');
       setLang(lang);
-      document.getElementById('btn-en').addEventListener('click',()=>setLang('en'));
-      document.getElementById('btn-de').addEventListener('click',()=>setLang('de'));
-      document.getElementById('year').textContent=new Date().getFullYear();
 
-      // set CSS var for dropdown offset
-      const topbar=document.querySelector('.topbar');
-      const setNavH=()=>document.documentElement.style.setProperty('--navH', topbar.offsetHeight+'px');
+      // attach lang switchers
+      const enBtn = document.getElementById('btn-en');
+      const deBtn = document.getElementById('btn-de');
+      if(enBtn) enBtn.addEventListener('click', ()=>setLang('en'));
+      if(deBtn) deBtn.addEventListener('click', ()=>setLang('de'));
+
+      // year in footer
+      const y = document.getElementById('year');
+      if (y) { y.textContent = new Date().getFullYear(); }
+
+      // mobile menu logic
+      const toggleBtn = document.querySelector('.nav-toggle');
+      const headerEl = document.querySelector('header.site');
+      const topbar = document.querySelector('.topbar');
+
+      // set CSS var --navH for dropdown offset
+      const setNavH = () => {
+        if(topbar){
+          document.documentElement.style.setProperty('--navH', topbar.offsetHeight + 'px');
+        }
+      };
       setNavH();
-      window.addEventListener('resize',()=>{setNavH(); if(window.innerWidth>860){document.querySelector('header.site').classList.remove('open'); toggleBtn.setAttribute('aria-expanded','false');}});
-
-      // mobile toggle
-      const toggleBtn=document.querySelector('.nav-toggle');
-      toggleBtn.addEventListener('click',()=>{
-        const hdr=document.querySelector('header.site');
-        const open=hdr.classList.toggle('open');
-        toggleBtn.setAttribute('aria-expanded', open?'true':'false');
+      window.addEventListener('resize', ()=>{
+        setNavH();
+        // close menu when back to desktop
+        if(window.innerWidth > 860 && headerEl && toggleBtn){
+          headerEl.classList.remove('open');
+          toggleBtn.setAttribute('aria-expanded','false');
+        }
       });
-      // close menu when clicking a link (mobile)
-      document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{
-        const hdr=document.querySelector('header.site');
-        if(hdr.classList.contains('open')){hdr.classList.remove('open'); toggleBtn.setAttribute('aria-expanded','false');}
-      }));
+
+      if(toggleBtn && headerEl){
+        toggleBtn.addEventListener('click', ()=>{
+          const isOpen = headerEl.classList.toggle('open');
+          toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      // close dropdown when clicking a nav link (mobile)
+      document.querySelectorAll('nav a').forEach(a=>{
+        a.addEventListener('click', ()=>{
+          if(headerEl && headerEl.classList.contains('open') && toggleBtn){
+            headerEl.classList.remove('open');
+            toggleBtn.setAttribute('aria-expanded','false');
+          }
+        });
+      });
     });
   </script>
 </body>
