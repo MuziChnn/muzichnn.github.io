@@ -60,7 +60,7 @@
     }
 
     h1 {
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       font-weight: 700;
       margin: .1rem 0 .4rem;
       line-height: 1.2;
@@ -77,11 +77,12 @@
     }
 
     h3 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
       line-height: 1.4;
       letter-spacing: -.01em;
       margin: .1rem 0 .5rem;
+      color: var(--primary);
     }
 
     p,
@@ -139,7 +140,7 @@
       color: var(--primary);
       font-weight: 700;
       white-space: nowrap;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       letter-spacing: -.02em;
     }
     .brand b {
@@ -367,7 +368,7 @@
       display: grid;
       grid-template-columns: 160px 1fr;
       gap: 24px;
-      align-items: center;
+      align-items: flex-start;
       transition: box-shadow var(--transition-medium), transform var(--transition-medium);
     }
     .hero__paper:hover {
@@ -659,30 +660,29 @@
     <section class="hero reveal-base" id="about">
       <div class="hero__paper">
         <img class="avatar" src="assets/profile.jpg" alt="Muzi Chen portrait">
+
         <div>
           <h1 data-i18n="about_h1">Muzi Chen (Monica)</h1>
 
-          <p data-i18n="about_p1">
-            M.A. Candidate in Media Psychology, Peking University · Visa-ready for Germany / EU ·
-            Open to relocation and full-time positions.
+          <p data-i18n="about_titleline">
+            M.A. Candidate in Media Psychology, Peking University
+          </p>
+          <p data-i18n="about_statusline">
+            Visa-ready for Germany / EU · Open to relocation and full-time positions
           </p>
 
           <p data-i18n="about_p2">
-            I am a research-driven UX professional passionate about translating complex human
-            insights into actionable product decisions. With a background bridging psychology,
-            user experience, and human–AI interaction, I bring analytical precision and cultural
-            fluency to cross-functional collaboration.
-          </p>
-
-          <p data-i18n="about_focus">
-            Career focus: User Research · Human–AI Interaction · UX Evaluation · Cognitive &amp;
-            Behavioral Insights
+            I am a research-driven UX professional passionate about translating complex
+            human insights into actionable product decisions. With a background
+            bridging psychology, user experience, and human–AI interaction, I bring
+            analytical precision and cultural fluency to cross-functional collaboration.
           </p>
 
           <div class="chips">
-            <span class="chip" data-i18n="about_chip1">UX Research</span>
+            <span class="chip" data-i18n="about_chip1">User Research</span>
             <span class="chip" data-i18n="about_chip2">Human–AI Interaction</span>
             <span class="chip" data-i18n="about_chip3">UX Evaluation</span>
+            <span class="chip" data-i18n="about_chip4">Cognitive & Behavioral Insights</span>
           </div>
 
           <p><b data-i18n="about_highlights_t">Key Highlights:</b></p>
@@ -690,19 +690,20 @@
           <ul class="bul">
             <li data-i18n="about_l1">
               <b>Tech × Research Integration:</b>
-              Experience at MSRA, Xiaomi International, and Kuaishou — aligning user research
-              with business and engineering needs to support evidence-based design decisions.
+              Experience at Microsoft Research Asia, Xiaomi International, and
+              Kuaishou — aligning user research with business and engineering needs to
+              support evidence-based design decisions.
             </li>
             <li data-i18n="about_l2">
               <b>Methods × Tools:</b>
-              Skilled in experimental design, usability testing, interviews, and surveys using
-              SPSS, Python, and visualization dashboards to turn data into decision-ready
-              reports.
+              Skilled in experimental design, usability testing, interviews, and
+              surveys using SPSS, Python, and visualization dashboards to turn data
+              into decision-ready reports.
             </li>
             <li data-i18n="about_l3">
               <b>Languages &amp; Collaboration:</b>
-              Fluent in English (IELTS 7.5), learning German (A2) and Spanish (A2); native
-              Chinese; experienced in intercultural and multilingual teamwork.
+              Fluent in English (IELTS 7.5), learning German (A2) and Spanish (A2);
+              native Chinese; experienced in intercultural and multilingual teamwork.
             </li>
           </ul>
 
@@ -826,7 +827,8 @@
           <p>
             <b data-i18n="bg">Background</b> —
             <span data-i18n="proj_thu_bg" data-metric>
-              A large-scale study (6,000+ participants, 10,000+ maps) investigated how
+              A large-scale study (<span class="kpi">6,000+</span> participants,
+              <span class="kpi">10,000+</span> maps) investigated how
               humans and AI differ in spatial navigation performance within complex
               environments.
             </span>
@@ -849,9 +851,9 @@
           <p>
             <b data-i18n="methods">Methods</b> —
             <span data-i18n="proj_thu_methods" data-metric>
-              Extracted over 80 spatial variables (e.g., path length, branching
-              complexity, cul-de-sac ratio) using Python; applied statistical
-              modeling to evaluate predictors of perceived difficulty.
+              Extracted over <span class="kpi">80</span> spatial variables (e.g., path
+              length, branching complexity, cul-de-sac ratio) using Python; applied
+              statistical modeling to evaluate predictors of perceived difficulty.
             </span>
           </p>
           <p>
@@ -925,7 +927,7 @@
 
       <!-- Industry -->
       <div class="card reveal-base">
-        <h3>Industry Experience</h3>
+        <h3 data-i18n="exp_industry_header">Industry Experience</h3>
 
         <div class="exp-card reveal-base">
           <div class="exp-header">
@@ -1033,7 +1035,7 @@
 
       <!-- Research -->
       <div class="card reveal-base">
-        <h3>Research Experience</h3>
+        <h3 data-i18n="exp_research_header">Research Experience</h3>
 
         <div class="exp-card reveal-base">
           <div class="exp-header">
@@ -1155,7 +1157,7 @@
       </div>
     </section>
 
-    <!-- ============ 5) EDUCATION ============ -->
+    <!-- ============ 5) EDUCATION & HONORS ============ -->
     <section id="education" class="reveal-base">
       <div class="section__head">
         <h2 class="section__title" data-i18n="edu_title">Education &amp; Honors</h2>
@@ -1163,36 +1165,66 @@
       </div>
 
       <div class="card reveal-base">
-        <b>Peking University</b> —
-        <i>M.A. in New Media (Media Psychology)</i> · 2023–2026
-        <br>
-        <span class="muted" data-i18n="edu_pku_tags">
-          First-Class Scholarship (2024); peer psychological mentor for graduate
-          students; led independent research on short-video motivation and well-being;
-          contributor to National Social Science Fund projects (2 years). Keywords:
-          media psychology · human–AI perception · data analysis · social cognition
-        </span>
+        <div class="exp-header">
+          <span data-i18n="edu_pku_school">Peking University</span> —
+          <i data-i18n="edu_pku_prog">M.A. in New Media (Media Psychology)</i>
+          · <span data-i18n="edu_pku_time">2023–2026</span>
+        </div>
+        <ul class="bul">
+          <li data-i18n="edu_pku_li1">
+            First-Class Scholarship, Top Institutional Level Award (2024)
+          </li>
+          <li data-i18n="edu_pku_li2">
+            Peer Psychological Mentor for graduate students
+          </li>
+          <li data-i18n="edu_pku_li3">
+            Led independent research on short-video motivation and well-being;
+            submitted academic paper to SSCI Q1 journal
+          </li>
+          <li data-i18n="edu_pku_li4">
+            Contributor to National Social Science Fund Projects for 2 years
+          </li>
+        </ul>
+        <p class="muted">
+          <b data-i18n="edu_pku_kw_t">Keywords:</b>
+          <span data-i18n="edu_pku_kw">
+            media psychology · human–AI perception · data analysis · social cognition
+          </span>
+        </p>
       </div>
 
       <div class="card reveal-base">
-        <b>Tampere University, Finland</b> —
-        <i>Exchange Program (Faculty of Social Sciences)</i> · 2025
-        <br>
-        <span class="muted" data-i18n="edu_tre_tags">
-          Studied social and personality psychology, intercultural communication, and
-          experimental design; participated in seminars on intercultural research
-          methods.
-        </span>
+        <div class="exp-header">
+          <span data-i18n="edu_tre_school">Tampere University, Finland</span> —
+          <i data-i18n="edu_tre_prog">Exchange Program (Faculty of Social Sciences)</i>
+          · <span data-i18n="edu_tre_time">2025</span>
+        </div>
+        <ul class="bul">
+          <li data-i18n="edu_tre_li1">
+            Studied social and personality psychology, intercultural communication,
+            and experimental design
+          </li>
+          <li data-i18n="edu_tre_li2">
+            Participated in seminars on intercultural research methods
+          </li>
+        </ul>
       </div>
 
       <div class="card reveal-base">
-        <b>Southwest Jiaotong University</b> —
-        <i>B.Sc. in Applied Psychology</i> · 2019–2023
-        <br>
-        <span class="muted" data-i18n="edu_swjtu_tags">
-          Thesis on sensation seeking and online addiction; participated in SRTP
-          Undergraduate Research Training Program.
-        </span>
+        <div class="exp-header">
+          <span data-i18n="edu_swjtu_school">Southwest Jiaotong University</span> —
+          <i data-i18n="edu_swjtu_prog">B.Sc. in Applied Psychology</i>
+          · <span data-i18n="edu_swjtu_time">2019–2023</span>
+        </div>
+        <ul class="bul">
+          <li data-i18n="edu_swjtu_li1">
+            Thesis: Relationship between College Students' Sensation Seeking,
+            Positive Psychological Capital, and Internet Addiction
+          </li>
+          <li data-i18n="edu_swjtu_li2">
+            Participated in SRTP Undergraduate Research Training Program
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -1294,18 +1326,19 @@
 
         // about
         about_h1: "Muzi Chen (Monica)",
-        about_p1:
-          "M.A. Candidate in Media Psychology, Peking University · Visa-ready for Germany / EU · Open to relocation and full-time positions.",
+        about_titleline:
+          "M.A. Candidate in Media Psychology, Peking University",
+        about_statusline:
+          "Visa-ready for Germany / EU · Open to relocation and full-time positions",
         about_p2:
           "I am a research-driven UX professional passionate about translating complex human insights into actionable product decisions. With a background bridging psychology, user experience, and human–AI interaction, I bring analytical precision and cultural fluency to cross-functional collaboration.",
-        about_focus:
-          "Career focus: User Research · Human–AI Interaction · UX Evaluation · Cognitive & Behavioral Insights",
-        about_chip1: "UX Research",
+        about_chip1: "User Research",
         about_chip2: "Human–AI Interaction",
         about_chip3: "UX Evaluation",
+        about_chip4: "Cognitive & Behavioral Insights",
         about_highlights_t: "Key Highlights:",
         about_l1:
-          "Tech × Research Integration: Experience at MSRA, Xiaomi International, and Kuaishou — aligning user research with business and engineering needs to support evidence-based design decisions.",
+          "Tech × Research Integration: Experience at Microsoft Research Asia, Xiaomi International, and Kuaishou — aligning user research with business and engineering needs to support evidence-based design decisions.",
         about_l2:
           "Methods × Tools: Skilled in experimental design, usability testing, interviews, and surveys using SPSS, Python, and visualization dashboards to turn data into decision-ready reports.",
         about_l3:
@@ -1365,6 +1398,8 @@
 
         // experience
         exp_title: "Experience",
+        exp_industry_header: "Industry Experience",
+        exp_research_header: "Research Experience",
         exp_xiaomi_title: "Pre-Sales Technical Engineer",
         exp_xiaomi_b1:
           "Translated complex technical specifications into clear, customer-friendly presentations, ensuring clients fully understood product functionality and value propositions.",
@@ -1425,12 +1460,36 @@
 
         // education
         edu_title: "Education & Honors",
-        edu_pku_tags:
-          "First-Class Scholarship (2024); peer psychological mentor for graduate students; led independent research on short-video motivation and well-being; contributor to National Social Science Fund projects (2 years). Keywords: media psychology · human–AI perception · data analysis · social cognition",
-        edu_tre_tags:
-          "Studied social and personality psychology, intercultural communication, and experimental design; participated in seminars on intercultural research methods.",
-        edu_swjtu_tags:
-          "Thesis on sensation seeking and online addiction; participated in SRTP Undergraduate Research Training Program.",
+        edu_pku_school: "Peking University",
+        edu_pku_prog: "M.A. in New Media (Media Psychology)",
+        edu_pku_time: "2023–2026",
+        edu_pku_li1:
+          "First-Class Scholarship, Top Institutional Level Award (2024)",
+        edu_pku_li2:
+          "Peer Psychological Mentor for graduate students",
+        edu_pku_li3:
+          "Led independent research on short-video motivation and well-being; submitted academic paper to SSCI Q1 journal",
+        edu_pku_li4:
+          "Contributor to National Social Science Fund Projects for 2 years",
+        edu_pku_kw_t: "Keywords:",
+        edu_pku_kw:
+          "media psychology · human–AI perception · data analysis · social cognition",
+
+        edu_tre_school: "Tampere University, Finland",
+        edu_tre_prog: "Exchange Program (Faculty of Social Sciences)",
+        edu_tre_time: "2025",
+        edu_tre_li1:
+          "Studied social and personality psychology, intercultural communication, and experimental design",
+        edu_tre_li2:
+          "Participated in seminars on intercultural research methods",
+
+        edu_swjtu_school: "Southwest Jiaotong University",
+        edu_swjtu_prog: "B.Sc. in Applied Psychology",
+        edu_swjtu_time: "2019–2023",
+        edu_swjtu_li1:
+          "Thesis: Relationship between College Students' Sensation Seeking, Positive Psychological Capital, and Internet Addiction",
+        edu_swjtu_li2:
+          "Participated in SRTP Undergraduate Research Training Program",
 
         // employers
         emp_title: "For Employers",
@@ -1474,18 +1533,19 @@
 
         // about
         about_h1: "Muzi Chen (Monica)",
-        about_p1:
-          "Masterstudentin der Medienpsychologie an der Peking University · Visa-bereit für Deutschland / EU · Offen für Relocation und Vollzeitstellen.",
+        about_titleline:
+          "Masterstudentin der Medienpsychologie an der Peking University",
+        about_statusline:
+          "Visa-bereit für Deutschland / EU · Offen für Relocation und Vollzeitstellen",
         about_p2:
           "Ich bin eine forschungsorientierte UX-Spezialistin mit Leidenschaft dafür, komplexe menschliche Erkenntnisse in umsetzbare Produktentscheidungen zu übersetzen. Durch meine interdisziplinäre Ausbildung in Psychologie, User Experience und Human–AI Interaction bringe ich analytische Präzision, interkulturelle Kompetenz und strukturierte Kommunikation in funktionsübergreifende Teams ein.",
-        about_focus:
-          "Forschungsschwerpunkte: User Research · Human–AI Interaction · UX-Evaluierung · Kognitive und Verhaltensanalyse",
-        about_chip1: "UX Research",
+        about_chip1: "User Research",
         about_chip2: "Mensch–KI-Interaktion",
         about_chip3: "UX-Evaluierung",
+        about_chip4: "Kognitive & Verhaltensanalyse",
         about_highlights_t: "Zentrale Highlights:",
         about_l1:
-          "Technologie × Forschung: Erfahrung bei MSRA, Xiaomi International und Kuaishou – Verknüpfung von Nutzerforschung, Geschäftsanforderungen und technischer Entwicklung zur datenbasierten Designentscheidung.",
+          "Technologie × Forschung: Erfahrung bei Microsoft Research Asia, Xiaomi International und Kuaishou – Verknüpfung von Nutzerforschung, Geschäftsanforderungen und technischer Entwicklung zur datenbasierten Designentscheidung.",
         about_l2:
           "Methoden × Tools: Fundierte Kenntnisse in Experimentaldesign, Usability-Tests, Interviews und Umfragen; sicherer Umgang mit SPSS, Python und Visualisierungstools zur Erstellung entscheidungsreifer Berichte.",
         about_l3:
@@ -1545,6 +1605,8 @@
 
         // experience
         exp_title: "Erfahrung",
+        exp_industry_header: "Berufserfahrung",
+        exp_research_header: "Forschungserfahrung",
         exp_xiaomi_title: "Pre-Sales Technical Engineer",
         exp_xiaomi_b1:
           "Komplexe technische Lösungen in verständlich aufbereitete Kundenpräsentationen übersetzt und so die Angebotsakzeptanz erhöht.",
@@ -1605,12 +1667,36 @@
 
         // education
         edu_title: "Ausbildung & Auszeichnungen",
-        edu_pku_tags:
-          "Erstklassiges Stipendium (2024); Peer-Mentorin für psychologische Unterstützung; eigenständige Forschung zu Kurzvideo-Motivation und Wohlbefinden; Mitarbeit an Projekten des Nationalen Sozialwissenschaftsfonds (2 Jahre). Schlüsselwörter: Medienpsychologie · Human-AI-Wahrnehmung · Datenanalyse · soziale Kognition",
-        edu_tre_tags:
-          "Studien in Sozial- und Persönlichkeitspsychologie, interkultureller Kommunikation und Experimentaldesign; Teilnahme an Seminaren zu interkulturellen Forschungsmethoden.",
-        edu_swjtu_tags:
-          "Bachelorarbeit über Sensation Seeking und Online-Abhängigkeit; Teilnahme am SRTP-Forschungsförderungsprogramm.",
+        edu_pku_school: "Peking University",
+        edu_pku_prog: "M.A. Neue Medien (Medienpsychologie)",
+        edu_pku_time: "2023–2026",
+        edu_pku_li1:
+          "Erstklassiges Stipendium, höchste interne Auszeichnung (2024)",
+        edu_pku_li2:
+          "Peer-Mentorin für psychologische Unterstützung von Masterstudierenden",
+        edu_pku_li3:
+          "Eigenständige Forschung zu Kurzvideo-Motivation und Wohlbefinden; Fachartikel bei einem SSCI-Q1-Journal eingereicht",
+        edu_pku_li4:
+          "Mitarbeit an Projekten des Nationalen Sozialwissenschaftsfonds (2 Jahre)",
+        edu_pku_kw_t: "Schlüsselwörter:",
+        edu_pku_kw:
+          "Medienpsychologie · Human-AI-Wahrnehmung · Datenanalyse · soziale Kognition",
+
+        edu_tre_school: "Tampere University (Finnland)",
+        edu_tre_prog: "Austauschprogramm (Fakultät Sozialwissenschaften)",
+        edu_tre_time: "2025",
+        edu_tre_li1:
+          "Studium der Sozial- und Persönlichkeitspsychologie, interkulturellen Kommunikation und Experimentaldesign",
+        edu_tre_li2:
+          "Teilnahme an Seminaren zu interkulturellen Forschungsmethoden",
+
+        edu_swjtu_school: "Southwest Jiaotong University",
+        edu_swjtu_prog: "B.Sc. Angewandte Psychologie",
+        edu_swjtu_time: "2019–2023",
+        edu_swjtu_li1:
+          "Bachelorarbeit: Zusammenhang zwischen Sensation Seeking, positivem psychologischem Kapital und Internetabhängigkeit bei Studierenden",
+        edu_swjtu_li2:
+          "Teilnahme am SRTP Undergraduate Research Training Program",
 
         // employers
         emp_title: "Für Arbeitgeber",
@@ -1698,7 +1784,7 @@
     function highlightMetrics(){
       document.querySelectorAll('[data-metric]').forEach(el=>{
         const t = el.textContent;
-        el.innerHTML = t.replace(/(~?\s?\d+[\d,]*\s?%|\d+[\d,]*\s?\+|\d+k\+?)/gi,
+        el.innerHTML = t.replace(/(~?\\s?\\d+[\\d,]*\\s?%|\\d+[\\d,]*\\s?\\+|\\d+k\\+?)/gi,
           m=>`<span class="kpi">${m.trim()}</span>`);
       });
     }
